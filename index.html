@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>John Aldrin Doruca — Aspiring Full Stack Developer</title>
+<meta name="description" content="John Aldrin Doruca (Gabbae), 2nd-year BSCS at Lipa City Colleges — PHP, MySQL, Supabase, Frontend. LCC Payroll, FitnessHub, LMS Compiler.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#05070b">
+<meta property="og:title" content="John Aldrin Doruca — Aspiring Full Stack Developer">
+<meta property="og:description" content="BSCS LCC · PHP + MySQL + Supabase · Payroll, gym and classroom IDE systems.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305070b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' fill='%2322d3ee' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="scene" aria-hidden="true">
+  <div class="scene-grid" id="sceneGrid"></div>
+  <div class="scene-spot" id="sceneSpot"></div>
+  <div class="scene-blob scene-blob-a" id="blobA"></div>
+  <div class="scene-blob scene-blob-b" id="blobB"></div>
+  <div class="scene-blob scene-blob-c" id="blobC"></div>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+<a class="skip" href="#projects">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-github" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></symbol>
+<symbol id="i-mail" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="m2.5 5 5.5 4 5.5-4"/></symbol>
+<symbol id="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1"/></symbol>
+<symbol id="i-up" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></symbol>
+<symbol id="i-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 8.5 3.5 3.5L13 4.5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M12.6 3.4l-1.1 1.1M4.5 11.5l-1.1 1.1"/></symbol>
+<symbol id="i-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 14s5-4.6 5-8a5 5 0 1 0-10 0c0 3.4 5 8 5 8Z"/><circle cx="8" cy="6" r="1.8"/></symbol>
+<symbol id="i-chat" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6l-3 2.5v-2.5H3a1 1 0 0 1-1-1v-6Z"/></symbol>
+<symbol id="i-send" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14.5 1.5 7 9M14.5 1.5 10 14.5l-3-5.5-5.5-3L14.5 1.5Z"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></symbol>
+<symbol id="i-messenger" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.92 1.56 5.55 4 7.33V22l3.66-2.02c.98.27 2.02.42 3.1.42h.24c5.52 0 10-4.14 10-9.25S17.52 2 12 2zm1.08 12.5-2.58-2.75-5.02 2.75 5.52-5.86 2.64 2.75 4.96-2.75-5.52 5.86z"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></symbol>
+<symbol id="i-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></symbol>
+</svg>
+
+<header class="nav" id="top">
+<div class="wrap nav-in">
+<a class="brand" href="#home" aria-label="Gabbae home"><span class="brand-dot" aria-hidden="true"></span><span>Gabbae</span></a>
+<nav class="nav-links" aria-label="Primary">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#achievements">Achievements</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="nav-cta">
+<button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg width="16" height="16" id="themeIcon"><use href="#i-moon"/></svg></button>
+<a class="btn btn-sm btn-dark" href="https://github.com/httpsGabbae" target="_blank" rel="noopener"><svg width="14" height="14"><use href="#i-github"/></svg><span class="hide-sm">GitHub</span></a>
+<button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+</div>
+</div>
+<div class="mobile-pop" id="mobileMenu" hidden>
+<a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+</div>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="hero" id="home">
+<div class="wrap hero-grid">
+<div class="reveal">
+<p class="eyebrow" data-hero>Lipa City, PH · BSCS</p>
+<div class="banner" data-hero><span class="pill-new">New</span> LMS Code Compiler — Monaco + Judge0 classroom IDE.</div>
+<h1 data-hero>John Aldrin Doruca. <span class="accent">Full-stack systems that work.</span></h1>
+<p class="title-line" data-hero>Aspiring Full Stack Developer</p>
+<p class="lead" data-hero>Second-year BSCS at Lipa City Colleges. I build school payroll, gym management, and classroom compiler systems in PHP + MySQL + Supabase — auth, CRUD, and real deployments on XAMPP.</p>
+<div class="cta-row" data-hero>
+<a href="#projects" class="btn btn-lg btn-dark">View work</a>
+<a href="#contact" class="btn btn-lg btn-light">Contact me</a>
+</div>
+<p class="mono meta-line" data-hero>BSCS 2nd year · PHP / MySQL / Supabase · 4 featured projects</p>
+</div>
+<div class="reveal" style="--d:80ms" data-hero>
+<div class="profile-card">
+<div class="profile-photo" id="profilePhoto">
+<img src="assets/img/profile.jpg" alt="Profile photo of John Aldrin Doruca" width="480" height="480" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+<div class="photo-fallback" style="display:none" aria-hidden="true">JD</div>
+</div>
+<div class="profile-b">
+<p class="mono">gabbae — profile</p>
+<strong>John Aldrin Doruca</strong>
+<p>Aspiring Full Stack Developer · Lipa City Colleges · Cybersecurity + Full-stack track.</p>
+<div class="profile-row">
+<a class="btn btn-sm btn-dark" href="https://github.com/httpsGabbae" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>httpsGabbae</a>
+<a class="inline" href="#about">More about me <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="wrap"><div class="strip mono" aria-label="Stack strip"><span>PHP 8.x</span><span>MySQL</span><span>Supabase</span><span>Laravel basics</span><span>HTML / CSS / JS</span><span>GitHub</span></div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="band-soft" id="about">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/about</p><h2>About me.</h2></div>
+<p class="sec-sub">BSCS student who learns by shipping real school systems, not tutorials.</p></div>
+<div class="about-grid">
+<div class="card pad reveal">
+<p class="mono-label">Who I am</p>
+<p>I'm <strong>John Aldrin Doruca (Gabbae)</strong>, a second-year <strong>BSCS student at Lipa City Colleges</strong>. I focus on full-stack web systems — PHP backends, MySQL/Supabase data, and clean Bootstrap frontends. My goal is to grow into <strong>cybersecurity + full-stack development</strong>.</p>
+<p>My education is hands-on: payroll processing with FPDF payslips, gym member/trainer flows, and a Monaco + Judge0 classroom compiler with autosave snapshots.</p>
+</div>
+<div class="stack reveal" style="--d:80ms">
+<div class="card pad"><p class="mono-label">Education</p><strong>Lipa City Colleges — BS Computer Science</strong><p class="mono card-meta">2nd year · Lipa City, PH · 2024 — present</p></div>
+<div class="card pad"><p class="mono-label">Focus</p><div class="pills"><span>Cybersecurity track</span><span>Full-stack systems</span><span>PHP + MySQL</span><span>Supabase</span></div></div>
+<div class="stats"><div><div class="stat-n" data-target="4" data-suffix="">4</div><div class="mono">featured projects</div></div><div><div class="stat-n" data-target="6" data-suffix="">6</div><div class="mono">core skills</div></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/skills</p><h2>Tech I ship with.</h2></div>
+<div class="skills-side"><p class="sec-sub">Boring stack, working software. Six skills and counting.</p>
+<figure class="donut-wrap" aria-label="Skill mix">
+<div class="donut-box"><svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Skill mix donut chart"><circle cx="60" cy="60" r="44" style="stroke:var(--link)" stroke-dasharray="59.42 276.46" stroke-dashoffset="0"/><circle cx="60" cy="60" r="44" style="stroke:var(--ink)" stroke-dasharray="58.13 276.46" stroke-dashoffset="-59.42"/><circle cx="60" cy="60" r="44" style="stroke:var(--body)" stroke-dasharray="56.84 276.46" stroke-dashoffset="-117.55"/><circle cx="60" cy="60" r="44" style="stroke:var(--mute)" stroke-dasharray="51.68 276.46" stroke-dashoffset="-174.39"/><circle cx="60" cy="60" r="44" style="stroke:var(--hairline-strong)" stroke-dasharray="50.38 276.46" stroke-dashoffset="-226.07"/></svg><div class="donut-center"><strong>6</strong><span class="mono">skills</span></div></div>
+<figcaption><ul class="donut-legend"><li><i class="dot" style="background:var(--link)"></i>Git 92</li><li><i class="dot" style="background:var(--ink)"></i>PHP 90</li><li><i class="dot" style="background:var(--body)"></i>Front 88</li><li><i class="dot" style="background:var(--mute)"></i>Supa 80</li><li><i class="dot" style="background:var(--hairline-strong)"></i>JS 78</li></ul></figcaption></figure></div></div>
+<div class="grid3">
+<div class="card pad reveal"><p class="mono-label">Backend</p>
+<div class="pills"><span>PHP 8.x</span><span>MySQL</span><span>Supabase</span><span>Laravel basics</span></div>
+<div class="meter"><div class="meter-top"><span>PHP + MySQL</span><span class="mono">90%</span></div><div class="bar"><div class="fill" data-w="90"></div></div></div>
+<div class="meter"><div class="meter-top"><span>Supabase</span><span class="mono">80%</span></div><div class="bar"><div class="fill" data-w="80"></div></div></div>
+</div>
+<div class="card pad reveal" style="--d:60ms"><p class="mono-label">Frontend</p>
+<div class="pills"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Bootstrap 5</span></div>
+<div class="meter"><div class="meter-top"><span>HTML / CSS / Bootstrap</span><span class="mono">88%</span></div><div class="bar"><div class="fill" data-w="88"></div></div></div>
+<div class="meter"><div class="meter-top"><span>JavaScript</span><span class="mono">78%</span></div><div class="bar"><div class="fill" data-w="78"></div></div></div>
+</div>
+<div class="card pad reveal" style="--d:120ms"><p class="mono-label">Workflow</p>
+<ul class="ticks">
+<li><svg width="13" height="13"><use href="#i-check"/></svg>Git + GitHub — I excel here</li>
+<li><svg width="13" height="13"><use href="#i-check"/></svg>XAMPP · phpMyAdmin · Postman</li>
+<li><svg width="13" height="13"><use href="#i-check"/></svg>FPDF reports · Auth / Sessions</li>
+<li><svg width="13" height="13"><use href="#i-check"/></svg>Monaco + Judge0 runner</li>
+</ul>
+<div class="meter"><div class="meter-top"><span>Git / GitHub</span><span class="mono">92%</span></div><div class="bar"><div class="fill" data-w="92"></div></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="band-soft" id="projects">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/projects</p><h2>Selected work.</h2></div>
+<p class="sec-sub">Finished and shipped — each solves a different problem.</p></div>
+<div class="plist">
+<article class="card prow reveal" style="--d:60ms"><div class="prow-thumb"><img src="assets/img/fitnesshub-pro.svg" alt="FitnessHub gym system" loading="lazy" width="800" height="450"></div>
+<div class="prow-b"><div class="stackicons"><span><svg width="13" height="13"><use href="#i-code"/></svg>PHP</span><span><svg width="13" height="13"><use href="#i-db"/></svg>MySQL</span><span><svg width="13" height="13"><use href="#i-grid"/></svg>Bootstrap</span></div>
+<h3>FitnessHub Gym System.</h3>
+<p>Spreadsheet member chaos → role logins with admin/member dashboards, add_member, find_trainer, view_member, and payment tracking.</p>
+<p class="mono card-meta">fitnesshub · roles + dashboards</p>
+<a class="inline" href="https://github.com/httpsGabbae/fitnesshub" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>View on GitHub <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
+</div></article>
+<article class="card prow reveal" style="--d:60ms"><div class="prow-thumb"><img src="assets/img/snapfolio.svg" alt="LearnEngage website" loading="lazy" width="800" height="450"></div>
+<div class="prow-b"><div class="stackicons"><span><svg width="13" height="13"><use href="#i-code"/></svg>HTML</span><span><svg width="13" height="13"><use href="#i-grid"/></svg>CSS</span><span><svg width="13" height="13"><use href="#i-zap"/></svg>JavaScript</span></div>
+<h3>LearnEngage Website.</h3>
+<p>Passive learning pages → interactive engagement flow: questions, engagement score, results, study tips, and printable certificate — pure frontend.</p>
+<p class="mono card-meta">LearnEngageWebsite · frontend bonus</p>
+<a class="inline" href="https://github.com/httpsGabbae/LearnEngageWebsite" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>View on GitHub <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
+</div></article>
+</div>
+</div>
+</section>
+
+<!-- IN PROGRESS -->
+<section class="band-soft" id="inprogress">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/in-progress</p><h2>Currently building.</h2></div>
+<p class="sec-sub">Actively in development — shipping soon.</p></div>
+<div class="plist">
+<article class="card prow reveal"><div class="prow-thumb"><img src="assets/img/lcc-payroll.svg" alt="LCC Payroll System" loading="lazy" width="800" height="450"></div>
+<div class="prow-b"><span class="badge-pending" style="align-self:flex-start">In progress</span><div class="stackicons"><span><svg width="13" height="13"><use href="#i-code"/></svg>PHP</span><span><svg width="13" height="13"><use href="#i-db"/></svg>MySQL</span><span><svg width="13" height="13"><use href="#i-file"/></svg>FPDF</span></div>
+<h3>Final LCC Payroll System.</h3>
+<p>Manual payroll + paper payslips → web system with login, employee records, payroll processing, attendance, reports, and one-click PDF payslips for Lipa City Colleges.</p>
+<p class="mono card-meta">Final-Lipa-City-Colleges-Pay-Roll-System · auth + CRUD + PDF</p>
+<a class="inline" href="https://github.com/httpsGabbae/Final-Lipa-City-Colleges-Pay-Roll-System" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>View on GitHub <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
+</div></article>
+<article class="card prow reveal" style="--d:60ms"><div class="prow-thumb"><img src="assets/img/laravel-rebuild.svg" alt="LMS Code Compiler" loading="lazy" width="800" height="450"></div>
+<div class="prow-b"><span class="badge-pending" style="align-self:flex-start">In progress</span><div class="stackicons"><span><svg width="13" height="13"><use href="#i-terminal"/></svg>Judge0</span><span><svg width="13" height="13"><use href="#i-code"/></svg>PHP</span><span><svg width="13" height="13"><use href="#i-db"/></svg>MySQL</span></div>
+<h3>LMS Code Compiler.</h3>
+<p>No classroom IDE → XAMPP-native compiler with Monaco editor, Judge0 run (Python/PHP/JS/Java/C#/C/C++), 5s autosnapshot polling, and frozen submit for professors.</p>
+<p class="mono card-meta">LMS-Code-Compiler · newest · 15 commits</p>
+<a class="inline" href="https://github.com/httpsGabbae/LMS-Code-Compiler" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>View on GitHub <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
+</div></article>
+</div>
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/achievements</p><h2>Proof, not promises.</h2></div>
+<p class="sec-sub">Hackathons, events, and systems in real use.</p></div>
+<div class="grid3">
+<div class="card pad reveal"><p class="mono-label">Hackathon</p><strong>3rd Place — Department Hackathon</strong><p>Placed third competing with fellow BSCS teams at Lipa City Colleges.</p><p class="mono card-meta">Lipa City Colleges</p></div>
+<div class="card pad reveal card-pending" style="--d:60ms"><p class="mono-label">Certification · <span class="badge-pending">Copy pending</span></p><strong>SMX PCTA Event — Certificate</strong><p>Certificate title, date, and file to follow — placeholder until the copy arrives.</p><p class="mono card-meta">SMX · PCTA</p></div>
+<div class="card pad reveal" style="--d:120ms"><p class="mono-label">In production</p><strong>First Production System</strong><p>LCC Payroll — employee records, payroll runs, and one-click PDF payslips built for the school.</p><p class="mono card-meta">PHP · MySQL · FPDF</p></div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="band-soft" id="contact">
+<div class="wrap">
+<div class="sec-head reveal"><div><p class="eyebrow">~/contact</p><h2>Say hi — let's talk.</h2></div>
+<p class="sec-sub">Form is demo + mailto fallback. GitHub is fastest.</p></div>
+<div class="contact-grid">
+<div class="stack reveal">
+<div class="row"><span class="ic"><svg width="17" height="17"><use href="#i-mail"/></svg></span><span><span class="mono">Email</span><strong id="emailText">j.doruca109@gmail.com</strong></span><button class="btn btn-sm btn-light" id="copyEmail" type="button"><svg width="13" height="13"><use href="#i-copy"/></svg>Copy</button></div>
+<a class="row" href="https://github.com/httpsGabbae" target="_blank" rel="noopener"><span class="ic"><svg width="17" height="17"><use href="#i-github"/></svg></span><span><span class="mono">GitHub</span><strong>github.com/httpsGabbae</strong></span><svg width="14" height="14" class="go"><use href="#i-arrow"/></svg></a>
+<a class="row" href="https://www.linkedin.com/in/johnaldrindoruca" target="_blank" rel="noopener"><span class="ic soft"><svg width="17" height="17"><use href="#i-linkedin"/></svg></span><span><span class="mono">LinkedIn</span><strong>in/johnaldrindoruca</strong></span><svg width="14" height="14" class="go"><use href="#i-arrow"/></svg></a>
+<a class="row" href="https://m.me/johnaldrindoruca" target="_blank" rel="noopener"><span class="ic soft"><svg width="17" height="17"><use href="#i-messenger"/></svg></span><span><span class="mono">Messenger</span><strong>Message me</strong></span><svg width="14" height="14" class="go"><use href="#i-arrow"/></svg></a>
+<div class="row"><span class="ic soft"><svg width="17" height="17"><use href="#i-pin"/></svg></span><span><span class="mono">Location</span><strong>Lipa City, PH</strong></span></div>
+</div>
+<form class="card pad reveal" id="contactForm" style="--d:80ms" novalidate>
+<div class="frow"><div><label class="mono" for="senderName">Name</label><input id="senderName" name="name" autocomplete="name" required placeholder="Your name"></div>
+<div><label class="mono" for="senderEmail">Email</label><input id="senderEmail" name="email" type="email" autocomplete="email" required placeholder="you@mail.com"></div></div>
+<div><label class="mono" for="senderMessage">Message</label><textarea id="senderMessage" name="message" rows="4" required placeholder="Hi Gabbae, I saw your payroll system and…"></textarea></div>
+<button class="btn btn-dark btn-lg full" id="sendBtn" type="submit">Send message</button>
+<p class="form-ok" id="formMsg" hidden><svg width="13" height="13"><use href="#i-check"/></svg><span>Thanks! Opening your mail app — or reach me at j.doruca109@gmail.com.</span></p>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap foot">
+<p class="mono"><span class="brand-dot"></span>Gabbae — John Aldrin Doruca · © <span id="year"></span></p>
+<nav aria-label="Footer"><a href="https://github.com/httpsGabbae" target="_blank" rel="noopener">GitHub</a><a href="#contact">Contact</a><a href="#home">Back to top ↑</a></nav>
+</div>
+</footer>
+
+<div class="chat-fab-wrap">
+<div class="chat-widget" id="chatWidget" hidden>
+<div class="chat card">
+<div class="chat-head"><span class="ic"><svg width="16" height="16"><use href="#i-chat"/></svg></span><div><strong>Gabbae Bot</strong><p class="mono">answers about stack · rate · who I am</p></div><span class="mono online">● online</span><button class="chat-close" id="chatClose" type="button" aria-label="Close chat">✕</button></div>
+<div class="chat-msgs" id="chatMsgs" aria-live="polite">
+<div class="msg bot">Hi! I'm Gabbae Bot. Ask me about John's stack, rate, or who he is.</div>
+</div>
+<div class="chips">
+<button type="button" data-q="What is your stack?">What is your stack?</button>
+<button type="button" data-q="How much is your rate?">How much is your rate?</button>
+<button type="button" data-q="Who are you?">Who are you?</button>
+</div>
+<form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Type stack, rate, or who are you…" autocomplete="off" aria-label="Ask about me"><button class="btn btn-dark" type="submit" aria-label="Send"><svg width="15" height="15"><use href="#i-send"/></svg></button></form>
+</div>
+</div>
+<button id="chatFab" type="button" aria-expanded="false" aria-controls="chatWidget"><svg width="16" height="16"><use href="#i-chat"/></svg><span>Ask me</span></button>
+</div>
+
+<button id="backTop" aria-label="Back to top"><svg width="16" height="16"><use href="#i-up"/></svg></button>
+<script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+<script type="module" src="script.js"></script>
+</body>
+</html>

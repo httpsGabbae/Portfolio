@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Payroll Classic login and records illustration">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a1a05"/><stop offset="1" stop-color="#c76a00"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg4)"/>
+  <circle cx="120" cy="400" r="110" fill="#ffffff" opacity=".08"/>
+  <!-- login card -->
+  <g>
+    <rect x="80" y="90" width="300" height="300" rx="18" fill="#0b0b16" opacity=".9"/>
+    <text x="110" y="136" font-family="Arial" font-weight="bold" font-size="22" fill="#fff">Admin login</text>
+    <rect x="110" y="156" width="240" height="44" rx="10" fill="#fff" opacity=".12"/>
+    <rect x="110" y="210" width="240" height="44" rx="10" fill="#fff" opacity=".12"/>
+    <rect x="110" y="272" width="240" height="46" rx="10" fill="#ff9d00"/>
+    <text x="110" y="301" font-family="Arial" font-weight="bold" font-size="18" fill="#2a1a05" text-anchor="middle" x2="0">⟶  Dashboard</text>
+    <text x="230" y="302" font-family="Arial" font-weight="bold" font-size="18" fill="#2a1a05" text-anchor="middle">Dashboard →</text>
+    <text x="110" y="350" font-family="monospace" font-size="15" fill="#ff9d00">login → dashboard → payroll</text>
+  </g>
+  <!-- records -->
+  <g>
+    <rect x="410" y="90" width="310" height="300" rx="18" fill="#ffffff"/>
+    <rect x="410" y="90" width="310" height="56" rx="18" fill="#06060a"/>
+    <text x="434" y="125" font-family="Arial" font-weight="bold" font-size="19" fill="#fff">Payroll records</text>
+    <g font-family="monospace" font-size="15" fill="#2a1a05">
+      <rect x="434" y="162" width="262" height="36" rx="8" fill="#2a1a05" opacity=".08"/>
+      <rect x="434" y="206" width="262" height="36" rx="8" fill="#2a1a05" opacity=".05"/>
+      <rect x="434" y="250" width="262" height="36" rx="8" fill="#2a1a05" opacity=".08"/>
+      <rect x="434" y="294" width="262" height="36" rx="8" fill="#ff9d00" opacity=".3"/>
+    </g>
+    <text x="448" y="186" font-family="monospace" font-size="15" fill="#2a1a05">25-0001  ₱18,200</text>
+    <text x="448" y="230" font-family="monospace" font-size="15" fill="#2a1a05">25-0002  ₱21,750</text>
+    <text x="448" y="274" font-family="monospace" font-size="15" fill="#2a1a05">25-0003  ₱19,400</text>
+    <text x="448" y="318" font-family="monospace" font-size="15" fill="#2a1a05">25-0004  ₱24,500 ✓</text>
+  </g>
+  <text x="80" y="445" font-family="Arial" font-weight="bold" font-size="30" fill="#ffffff">Payroll Classic</text>
+  <text x="400" y="445" font-family="Arial" font-size="20" fill="#ffffff" opacity=".85">CRUD + PDF reports</text>
+</svg>

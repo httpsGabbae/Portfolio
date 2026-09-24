@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Laravel payroll rebuild MVC illustration">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a0a22"/><stop offset="1" stop-color="#ff3d81"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  <circle cx="690" cy="100" r="120" fill="#ffffff" opacity=".1"/>
+  <!-- MVC blocks -->
+  <g font-family="Arial" font-weight="bold" text-anchor="middle">
+    <rect x="90" y="90" width="180" height="200" rx="16" fill="#0b0b16" opacity=".88"/>
+    <text x="180" y="130" font-size="19" fill="#ff3d81">MODEL</text>
+    <rect x="112" y="148" width="136" height="12" rx="6" fill="#fff" opacity=".7"/>
+    <rect x="112" y="170" width="100" height="12" rx="6" fill="#fff" opacity=".4"/>
+    <rect x="112" y="192" width="120" height="12" rx="6" fill="#fff" opacity=".4"/>
+    <rect x="112" y="226" width="136" height="30" rx="8" fill="#ff3d81" opacity=".85"/>
+    <rect x="290" y="90" width="180" height="200" rx="16" fill="#0b0b16" opacity=".88"/>
+    <text x="380" y="130" font-size="19" fill="#00e5cc">VIEW</text>
+    <rect x="312" y="148" width="136" height="60" rx="8" fill="#ffffff" opacity=".15"/>
+    <rect x="312" y="218" width="136" height="12" rx="6" fill="#00e5cc" opacity=".8"/>
+    <rect x="312" y="240" width="90" height="12" rx="6" fill="#fff" opacity=".5"/>
+    <rect x="490" y="90" width="180" height="200" rx="16" fill="#ffffff"/>
+    <text x="580" y="130" font-size="19" fill="#3a0a22">CONTROL</text>
+    <rect x="512" y="148" width="136" height="12" rx="6" fill="#3a0a22" opacity=".7"/>
+    <rect x="512" y="170" width="100" height="12" rx="6" fill="#3a0a22" opacity=".4"/>
+    <rect x="512" y="192" width="120" height="12" rx="6" fill="#3a0a22" opacity=".4"/>
+    <rect x="512" y="226" width="136" height="30" rx="8" fill="#3a0a22"/>
+  </g>
+  <!-- terminal -->
+  <rect x="90" y="308" width="580" height="84" rx="14" fill="#06060a"/>
+  <circle cx="118" cy="330" r="6" fill="#ff5f57"/><circle cx="138" cy="330" r="6" fill="#febc2e"/><circle cx="158" cy="330" r="6" fill="#28c840"/>
+  <text x="112" y="364" font-family="monospace" font-size="19" fill="#22c55e">$ php artisan migrate --seed ✓</text>
+  <text x="560" y="250" font-family="Arial" font-weight="bold" font-size="64" fill="#ffffff" opacity=".9">13</text>
+  <text x="70" y="445" font-family="Arial" font-weight="bold" font-size="29" fill="#ffffff">LCC Payroll — Laravel</text>
+  <text x="470" y="445" font-family="Arial" font-size="20" fill="#ffffff" opacity=".8">PHP 8.3 • Blade</text>
+</svg>
