@@ -1162,11 +1162,14 @@ footer {
 }
 .about-photo {
   margin: 0;
+  width: 100%;
+  max-width: 260px;
+  justify-self: end;
 }
 .about-photo img {
   width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  aspect-ratio: auto;
+  object-fit: contain;
   border-radius: 18px;
   border: 1px solid var(--line);
   display: block;
