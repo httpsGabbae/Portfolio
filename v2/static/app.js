@@ -107,7 +107,7 @@
     // CDN fallback: everything visible, native scroll.
     $$(".mask-in").forEach((el) => { el.style.transform = "none"; });
     $$(".shot").forEach((el) => { el.style.opacity = "1"; el.style.visibility = "visible"; });
-    $$(".step").forEach((el) => { el.style.opacity = "1"; });
+    $$(".meter i").forEach((el) => { el.style.width = el.dataset.w + "%"; });
     if (label) label.textContent = "09 / 09";
     return;
   }
@@ -116,8 +116,8 @@
     gsap.set(".mask-in", { yPercent: 0 });
     gsap.set(".hero-fade", { opacity: 1, y: 0 });
     gsap.set(".shot", { autoAlpha: 1 });
-    gsap.set(".about-cell,.svc,.reveal-line", { opacity: 1, y: 0 });
-    gsap.set(".step", { opacity: 1 });
+    gsap.set(".about-cell,.skill,.phase,.reveal-line", { opacity: 1, y: 0 });
+    gsap.set(".meter i", { width: (i, el) => el.dataset.w + "%" });
     if (label) label.textContent = "09 / 09";
     return;
   }
@@ -229,16 +229,21 @@
     opacity: 1, stagger: 0.25, ease: "none",
     scrollTrigger: { trigger: ".about-big", start: "top 78%", end: "bottom 45%", scrub: true },
   });
-  $$(".svc").forEach((row) => {
-    gsap.fromTo(row, { opacity: 0, y: 32 }, {
-      opacity: 1, y: 0, duration: 0.7, ease: "power3.out",
-      scrollTrigger: { trigger: row, start: "top 88%" },
+  $$(".skill").forEach((card, i) => {
+    gsap.fromTo(card, { opacity: 0, y: 32 }, {
+      opacity: 1, y: 0, duration: 0.6, ease: "power3.out", delay: (i % 2) * 0.08,
+      scrollTrigger: { trigger: card, start: "top 88%" },
+    });
+    const bar = $(".meter i", card);
+    gsap.fromTo(bar, { width: "0%" }, {
+      width: bar.dataset.w + "%", duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: card, start: "top 85%" },
     });
   });
-  $$(".step").forEach((step) => {
-    gsap.fromTo(step, { opacity: 0.22 }, {
-      opacity: 1, ease: "none",
-      scrollTrigger: { trigger: step, start: "top 78%", end: "top 32%", scrub: true },
+  $$(".phase").forEach((card, i) => {
+    gsap.fromTo(card, { opacity: 0, y: 32 }, {
+      opacity: 1, y: 0, duration: 0.6, ease: "power3.out", delay: (i % 3) * 0.08,
+      scrollTrigger: { trigger: card, start: "top 88%" },
     });
   });
   gsap.fromTo(".contact .mask-in", { yPercent: 110 }, {
