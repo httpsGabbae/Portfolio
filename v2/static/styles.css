@@ -33,7 +33,7 @@ html[data-theme="light"] #iconMoon { display: block; }
 html[data-theme="light"] #iconSun { display: none; }
 
 * { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
+/* NOTE: overflow-x:clip only — `hidden` on html/body breaks position:sticky. */
 html, body { overflow-x: clip; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -166,18 +166,24 @@ html.js .shot { opacity: 0; visibility: hidden; }
 .shot .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
 .shot .tags span { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--muted); }
 .stage-count { position: absolute; right: var(--pad); bottom: 6vh; font-family: var(--font-display); letter-spacing: 0.2em; color: var(--muted); font-size: 13px; z-index: 3; }
+.shot-dots { display: none; }
 .visual { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--bg-soft); aspect-ratio: 16/10; max-height: 54svh; width: 100%; align-self: center; position: relative; }
 .visual.has-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 900px) {
   .stage-pin { height: auto; display: block; }
+  .stage { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4vh var(--pad) 4vh; scrollbar-width: none; }
+  .stage::-webkit-scrollbar { display: none; }
   html.js .shot, .shot {
-    position: sticky; top: 76px; opacity: 1; visibility: visible;
-    grid-template-columns: 1fr; gap: 20px; padding: 28px 22px; margin: 0 var(--pad) 18px;
+    position: relative; inset: auto; opacity: 1; visibility: visible;
+    flex: 0 0 84vw; scroll-snap-align: center; display: block;
+    padding: 26px 20px; margin: 0;
     background: var(--bg-soft); border: 1px solid var(--line); border-radius: 20px;
-    min-height: 0;
   }
-  .stage { padding: 4vh 0 8vh; }
-  .stage-count { position: static; text-align: right; padding: 0 var(--pad) 6vh; }
+  .shot .visual { margin-top: 18px; }
+  .stage-count { display: none; }
+  .shot-dots { display: flex; gap: 10px; justify-content: center; padding: 0 0 6vh; }
+  .shot-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; background: var(--line); padding: 0; min-height: 0; cursor: pointer; }
+  .shot-dots button.on { background: var(--accent); }
 }
 
 /* ---------- Horizontal ---------- */

@@ -223,6 +223,48 @@
     });
   });
 
+  /* ---------- Mobile project slideshow (auto, continuous) ---------- */
+  (function mobileSlides() {
+    const stage = $("#stage");
+    const dotsWrap = $("#shotDots");
+    if (!stage || !dotsWrap) return;
+    const mq = window.matchMedia("(max-width: 900px)");
+    const cards = $$(".shot", stage);
+    const dots = $$("button", dotsWrap);
+    if (!cards.length || !dots.length) return;
+    let idx = 0, pausedUntil = 0, ticking = false;
+    function current() {
+      const sr = stage.getBoundingClientRect();
+      const mid = sr.left + sr.width / 2;
+      let best = 0, bestD = Infinity;
+      cards.forEach((c, i) => {
+        const r = c.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      return best;
+    }
+    function paint() { dots.forEach((d, i) => d.classList.toggle("on", i === idx)); }
+    function go(i, user) {
+      idx = (i + cards.length) % cards.length;
+      cards[idx].scrollIntoView({ behavior: reduced ? "auto" : "smooth", inline: "center", block: "nearest" });
+      if (user) pausedUntil = Date.now() + 9000;
+      paint();
+    }
+    dots.forEach((d, i) => d.addEventListener("click", () => go(i, true)));
+    ["pointerdown", "touchstart", "wheel"].forEach((ev) =>
+      stage.addEventListener(ev, () => { pausedUntil = Date.now() + 9000; }, { passive: true }));
+    stage.addEventListener("scroll", () => {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(() => { idx = current(); paint(); ticking = false; });
+    }, { passive: true });
+    paint();
+    setInterval(() => {
+      if (!mq.matches || reduced || document.hidden || Date.now() < pausedUntil) return;
+      go(idx + 1, false);
+    }, 4500);
+  })();
+
   /* ---------- Horizontal archive (desktop pin) ---------- */
   mm.add("(min-width: 901px)", () => {
     const track = $("#htrack"), hfill = $("#hfill");
