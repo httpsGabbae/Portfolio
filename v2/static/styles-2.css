@@ -143,9 +143,8 @@ html.js .mask-in {
   -webkit-text-stroke: 1px var(--muted);
 }
 
-/* ---------- Cursor ---------- */
-.cursor-dot,
-.cursor-ring {
+/* ---------- Cursor (dot only) ---------- */
+.cursor-dot {
   position: fixed;
   left: 0;
   top: 0;
@@ -154,12 +153,10 @@ html.js .mask-in {
   opacity: 0;
   transition: opacity 0.3s;
 }
-body.cursor-on .cursor-dot,
-body.cursor-on .cursor-ring {
+body.cursor-on .cursor-dot {
   opacity: 1;
 }
-body.cursor-on.cursor-idle .cursor-dot,
-body.cursor-on.cursor-idle .cursor-ring {
+body.cursor-on.cursor-idle .cursor-dot {
   opacity: 0;
 }
 .cursor-dot {
@@ -168,45 +165,8 @@ body.cursor-on.cursor-idle .cursor-ring {
   border-radius: 50%;
   background: var(--accent);
 }
-.cursor-ring {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(245, 245, 245, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    width 0.3s var(--ease-out),
-    height 0.3s var(--ease-out),
-    background 0.3s,
-    border-color 0.3s;
-}
-.cursor-ring span {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  opacity: 0;
-  color: #041016;
-  transition: opacity 0.2s;
-}
-.cursor-ring.is-view {
-  width: 88px;
-  height: 88px;
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.cursor-ring.is-view span {
-  opacity: 1;
-}
-.cursor-ring.is-link {
-  width: 56px;
-  height: 56px;
-  border-color: var(--accent);
-}
 @media (hover: none), (pointer: coarse) {
-  .cursor-dot,
-  .cursor-ring {
+  .cursor-dot {
     display: none;
   }
 }
@@ -378,6 +338,8 @@ body.photo-near .progress {
   border-color: var(--accent);
   color: var(--accent);
 }
+.theme-flash { position: fixed; inset: 0; z-index: 350; pointer-events: none; opacity: 0;
+  background: radial-gradient(640px 420px at 50% 38%, rgba(255,236,180,0.95), rgba(34,211,238,0.28) 46%, transparent 70%); }
 .mobile-menu {
   position: fixed;
   inset: 0;
