@@ -247,7 +247,11 @@
     function paint() { dots.forEach((d, i) => d.classList.toggle("on", i === idx)); }
     function go(i, user) {
       idx = (i + cards.length) % cards.length;
-      cards[idx].scrollIntoView({ behavior: reduced ? "auto" : "smooth", inline: "center", block: "nearest" });
+      // Track-only scroll: scrollIntoView would also yank the PAGE vertically.
+      const sr = stage.getBoundingClientRect();
+      const cr = cards[idx].getBoundingClientRect();
+      const target = stage.scrollLeft + (cr.left + cr.width / 2) - (sr.left + sr.width / 2);
+      stage.scrollTo({ left: target, behavior: reduced ? "auto" : "smooth" });
       if (user) pausedUntil = Date.now() + 9000;
       paint();
     }
