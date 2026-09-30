@@ -62,7 +62,7 @@
   /* ---------- Nav state + mobile menu ---------- */
   const nav = $("#nav");
   const rail = $(".progress");
-  const photos = [$(".hero-photo"), $(".about-photo"), $(".contact-photo")].filter(Boolean);
+  const photos = [$(".hero-photo"), $(".about-photo")].filter(Boolean);
   let idleTimer = 0;
   const onScrollPos = (y) => {
     if (nav) nav.classList.toggle("scrolled", y > 40);
@@ -271,6 +271,66 @@
       scrollTrigger: { trigger: ".contact", start: "top 72%" },
     });
   }
+
+  /* ---------- Spice: Manila clock, magnetic CTAs, spotlight, photo drift, easter egg ---------- */
+  const clock = $("#manilaClock");
+  const paintClock = () => {
+    try {
+      const t = new Intl.DateTimeFormat("en-PH", { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "Asia/Manila" }).format(new Date());
+      if (clock) clock.textContent = "Lipa City, PH · " + t + " PHT";
+    } catch (_) {}
+  };
+  paintClock();
+  setInterval(paintClock, 30000);
+
+  if (fine && !reduced) {
+    $$(".btn-solid").forEach((b) => {
+      b.addEventListener("pointermove", (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.translate = ((e.clientX - r.left - r.width / 2) * 0.08).toFixed(1) + "px " + ((e.clientY - r.top - r.height / 2) * 0.14).toFixed(1) + "px";
+      });
+      b.addEventListener("pointerleave", () => { b.style.translate = "0px 0px"; });
+    });
+    $$(".skill").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+        card.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+      }, { passive: true });
+    });
+  }
+
+  if (hasGsap && hasST && !reduced) {
+    gsap.to(".hero-photo", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  }
+
+  // Type "gabbae" anywhere (outside inputs) for a surprise.
+  let keys = "";
+  window.__gabbaeEgg = function () {
+    if (window.__gabbaeSay) window.__gabbaeSay("You found the secret. Nice — attention to detail is the whole job.");
+    if (reduced || !hasGsap) return;
+    const layer = document.createElement("div");
+    layer.setAttribute("aria-hidden", "true");
+    layer.style.cssText = "position:fixed;inset:0;z-index:400;pointer-events:none;overflow:hidden";
+    const colors = ["#22d3ee", "#f5f5f5", "#1c7a4d", "#7dd3fc"];
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement("span");
+      const sz = (5 + Math.random() * 8).toFixed(0);
+      s.style.cssText = "position:absolute;left:" + (20 + Math.random() * 60).toFixed(1) + "%;top:-20px;width:" + sz + "px;height:" + sz + "px;border-radius:" + (Math.random() > 0.5 ? "50%" : "2px") + ";background:" + colors[i % colors.length];
+      layer.appendChild(s);
+      gsap.to(s, { y: window.innerHeight + 60, x: "+=" + ((Math.random() - 0.5) * 240).toFixed(0), rotation: Math.random() * 540, opacity: 0, duration: 1.4 + Math.random(), ease: "power1.in", delay: Math.random() * 0.4 });
+    }
+    document.body.appendChild(layer);
+    setTimeout(() => layer.remove(), 2600);
+  };
+  document.addEventListener("keydown", (e) => {
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (e.key && e.key.length === 1) {
+      keys = (keys + e.key.toLowerCase()).slice(-6);
+      if (keys === "gabbae") { keys = ""; window.__gabbaeEgg(); }
+    }
+  });
 })();
 
 /* ---------- Gabbae Bot (same answers as the main portfolio; runs always) ---------- */
@@ -321,6 +381,7 @@
   }
   function openChat() { widget.hidden = false; fab.setAttribute("aria-expanded", "true"); }
   function closeChat() { widget.hidden = true; fab.setAttribute("aria-expanded", "false"); }
+  window.__gabbaeSay = (t) => { openChat(); addMsg(t, "bot"); };
   fab.addEventListener("click", () => {
     widget.hidden ? openChat() : closeChat();
     if (!widget.hidden) setTimeout(() => input.focus(), 50);
