@@ -1180,6 +1180,12 @@ footer {
 @media (max-width: 900px) {
   .about-top {
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .about-photo {
+    justify-self: center;
+    max-width: min(280px, 100%);
+    text-align: center;
   }
 }
 
