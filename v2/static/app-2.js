@@ -51,35 +51,12 @@
     if (localStorage.getItem("v2-theme") === "light") document.documentElement.dataset.theme = "light";
   } catch (_) {}
   paintTheme();
-  function lightSurprise() {
-    if (reduced) return;
-    const flash = document.createElement("div");
-    flash.className = "theme-flash";
-    flash.setAttribute("aria-hidden", "true");
-    document.body.appendChild(flash);
-    const bye = () => flash.remove();
-    if (hasGsap) {
-      gsap.fromTo(flash, { opacity: 0 }, { opacity: 0.8, duration: 0.22, ease: "power1.out",
-        onComplete: () => gsap.to(flash, { opacity: 0, duration: 0.5, onComplete: bye }) });
-      for (let i = 0; i < 16; i++) {
-        const m = document.createElement("span");
-        const sz = (5 + Math.random() * 9).toFixed(0);
-        m.style.cssText = "position:fixed;left:" + (10 + Math.random() * 80).toFixed(1) + "%;bottom:-20px;width:" + sz + "px;height:" + sz + "px;border-radius:50%;z-index:351;pointer-events:none;background:" + ["#ffd166", "#fff7e0", "#22d3ee"][i % 3];
-        document.body.appendChild(m);
-        gsap.to(m, { y: -(window.innerHeight * 0.55 + Math.random() * 200), x: "+=" + ((Math.random() - 0.5) * 160).toFixed(0), opacity: 0, duration: 1.2 + Math.random(), ease: "power1.out", delay: Math.random() * 0.25, onComplete: (() => { const el = m; return () => el.remove(); })() });
-      }
-      if (themeBtn) gsap.fromTo(themeBtn, { rotation: 0 }, { rotation: 180, duration: 0.5, ease: "back.out(1.6)" });
-    } else {
-      setTimeout(bye, 60);
-    }
-  }
   if (themeBtn) themeBtn.addEventListener("click", () => {
     const light = document.documentElement.dataset.theme !== "light";
     if (light) document.documentElement.dataset.theme = "light";
     else document.documentElement.removeAttribute("data-theme");
     try { localStorage.setItem("v2-theme", light ? "light" : "dark"); } catch (_) {}
     paintTheme();
-    if (light) lightSurprise();
   });
 
   /* ---------- Nav state + mobile menu ---------- */

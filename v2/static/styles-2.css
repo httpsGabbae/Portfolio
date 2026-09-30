@@ -338,8 +338,11 @@ body.photo-near .progress {
   border-color: var(--accent);
   color: var(--accent);
 }
-.theme-flash { position: fixed; inset: 0; z-index: 350; pointer-events: none; opacity: 0;
-  background: radial-gradient(640px 420px at 50% 38%, rgba(255,236,180,0.95), rgba(34,211,238,0.28) 46%, transparent 70%); }
+@media (hover: hover) and (pointer: fine) {
+  body, body a, body button, body input, body textarea, body label, body .icon-btn, body .burger {
+    cursor: none;
+  }
+}
 .mobile-menu {
   position: fixed;
   inset: 0;
