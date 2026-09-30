@@ -222,3 +222,70 @@
     scrollTrigger: { trigger: ".contact", start: "top 72%" },
   });
 })();
+
+/* ---------- Gabbae Bot (same answers as the main portfolio; runs always) ---------- */
+(function () {
+  "use strict";
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => Array.prototype.slice.call(document.querySelectorAll(s));
+  const A_STACK = "PHP, Front End, I excel in Github and Supabase. Mostly Full Stack.";
+  const A_RATE = "Send me a message and lets talk about it! Scrolling you to the contact section now.";
+  const A_WHO = "I am John Aldrin Doruca, a student at Lipa City Colleges studying computer science and aspiring as part of cybersecurity and full stack developer.";
+  const msgs = $("#chatMsgs"), form = $("#chatForm"), input = $("#chatInput");
+  const widget = $("#chatWidget"), fab = $("#chatFab");
+  function addMsg(text, who) {
+    const d = document.createElement("div");
+    d.className = "msg " + who;
+    d.textContent = text;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  function answer(q) {
+    const t = (q || "").toLowerCase();
+    if (/stack|tech|tools|language|supabase|php|frontend|front-end/.test(t)) return { type: "text", text: A_STACK };
+    if (/rate|price|cost|magkano|bayad|fee|salary|how much/.test(t)) return { type: "rate", text: A_RATE };
+    if (/who are you|sino|your name|yourself|about you|who is/.test(t)) return { type: "text", text: A_WHO };
+    if (/educ|school|college|lipa|course|study|bscs/.test(t)) return { type: "text", text: "2nd-year BSCS at Lipa City Colleges, Lipa City PH. Focus: full-stack systems + cybersecurity track." };
+    if (/skill/.test(t)) return { type: "text", text: "Top skills: " + A_STACK + " Also MySQL, Bootstrap, Git, Laravel basics." };
+    if (/project|work|portfolio|github|repo/.test(t)) return { type: "text", text: "Featured: Final LCC Payroll, FitnessHub gym, LMS Code Compiler (Monaco+Judge0), LearnEngage frontend. See #work — all on github.com/httpsGabbae." };
+    if (/hackathon|achiev|award|lead/.test(t)) return { type: "text", text: "3rd placer — department hackathon. Plus shipped 4 school systems end-to-end." };
+    if (/contact|email|hire|message|messenger|linkedin/.test(t)) return { type: "contact", text: "Email me at j.doruca109@gmail.com or use the links below — taking you there." };
+    if (/hi|hello|hey|kumusta/.test(t)) return { type: "text", text: "Hello! Ask me: What is your stack? / How much is your rate? / Who are you?" };
+    return { type: "text", text: "I answer best about stack, rate, or who I am — tap a preset above or type those keywords." };
+  }
+  function ask(q) {
+    if (!q.trim()) return;
+    addMsg(q, "user");
+    setTimeout(() => {
+      const r = answer(q);
+      addMsg(r.text, "bot");
+      if (r.type === "rate" || r.type === "contact") {
+        setTimeout(() => {
+          const c = $("#contact");
+          if (c) c.scrollIntoView({ behavior: "smooth" });
+        }, 900);
+      }
+    }, 350);
+  }
+  function openChat() { widget.hidden = false; fab.setAttribute("aria-expanded", "true"); }
+  function closeChat() { widget.hidden = true; fab.setAttribute("aria-expanded", "false"); }
+  fab.addEventListener("click", () => {
+    widget.hidden ? openChat() : closeChat();
+    if (!widget.hidden) setTimeout(() => input.focus(), 50);
+  });
+  $("#chatClose").addEventListener("click", () => { closeChat(); fab.focus(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !widget.hidden) { closeChat(); fab.focus(); }
+  });
+  $$("[data-q]").forEach((b) => b.addEventListener("click", () => {
+    openChat();
+    ask(b.dataset.q || "");
+    setTimeout(() => input.focus(), 50);
+  }));
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = input.value;
+    input.value = "";
+    ask(q);
+  });
+})();
