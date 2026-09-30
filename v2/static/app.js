@@ -312,16 +312,16 @@
     const layer = document.createElement("div");
     layer.setAttribute("aria-hidden", "true");
     layer.style.cssText = "position:fixed;inset:0;z-index:400;pointer-events:none;overflow:hidden";
-    const colors = ["#22d3ee", "#f5f5f5", "#1c7a4d", "#7dd3fc"];
-    for (let i = 0; i < 28; i++) {
+    const colors = ["#22d3ee", "#f5f5f5", "#1c7a4d", "#7dd3fc", "#ffd166", "#ef476f"];
+    for (let i = 0; i < 90; i++) {
       const s = document.createElement("span");
-      const sz = (5 + Math.random() * 8).toFixed(0);
-      s.style.cssText = "position:absolute;left:" + (20 + Math.random() * 60).toFixed(1) + "%;top:-20px;width:" + sz + "px;height:" + sz + "px;border-radius:" + (Math.random() > 0.5 ? "50%" : "2px") + ";background:" + colors[i % colors.length];
+      const sz = (8 + Math.random() * 14).toFixed(0);
+      s.style.cssText = "position:absolute;left:" + (5 + Math.random() * 90).toFixed(1) + "%;top:-24px;width:" + sz + "px;height:" + (sz * (Math.random() > 0.5 ? 1 : 0.5)).toFixed(0) + "px;border-radius:" + (Math.random() > 0.5 ? "50%" : "3px") + ";background:" + colors[i % colors.length];
       layer.appendChild(s);
-      gsap.to(s, { y: window.innerHeight + 60, x: "+=" + ((Math.random() - 0.5) * 240).toFixed(0), rotation: Math.random() * 540, opacity: 0, duration: 1.4 + Math.random(), ease: "power1.in", delay: Math.random() * 0.4 });
+      gsap.to(s, { y: window.innerHeight + 80, x: "+=" + ((Math.random() - 0.5) * 320).toFixed(0), rotation: Math.random() * 720, opacity: 0, duration: 1.8 + Math.random() * 1.2, ease: "power1.in", delay: Math.random() * 0.5 });
     }
     document.body.appendChild(layer);
-    setTimeout(() => layer.remove(), 2600);
+    setTimeout(() => layer.remove(), 3400);
   };
   document.addEventListener("keydown", (e) => {
     const tag = (e.target && e.target.tagName) || "";

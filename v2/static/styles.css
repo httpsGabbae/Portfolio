@@ -33,6 +33,7 @@ html[data-theme="light"] #iconMoon { display: block; }
 html[data-theme="light"] #iconSun { display: none; }
 
 * { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
 html, body { overflow-x: clip; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -169,6 +170,7 @@ html.js .shot { opacity: 0; visibility: hidden; }
 @media (max-width: 900px) {
   .stage-pin { height: auto; display: block; }
   html.js .shot, .shot { position: relative; inset: auto; opacity: 1; visibility: visible; grid-template-columns: 1fr; padding: 6vh var(--pad); }
+  .stage-count { position: static; text-align: right; padding: 0 var(--pad) 6vh; }
 }
 
 /* ---------- Horizontal ---------- */
@@ -178,7 +180,7 @@ html.js .shot { opacity: 0; visibility: hidden; }
 .hcard-title { font-size: clamp(1.4rem, 2.4vw, 2rem); text-transform: uppercase; margin-top: 8px; }
 .hbar { height: 2px; background: var(--line); margin: 48px var(--pad) 0; position: relative; }
 .hbar i { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(0); }
-@media (max-width: 900px) { .htrack { flex-direction: column; width: auto; } .hcard { width: auto; } }
+@media (max-width: 900px) { .htrack { flex-direction: column; width: auto; } .hcard { width: auto; } .hbar { display: none; } }
 
 /* ---------- About ---------- */
 .about { padding: 12vh 0; }
@@ -241,6 +243,11 @@ a.crow:hover { border-color: var(--accent); transform: translateY(-2px); }
 .cic.soft { background: var(--bg); color: var(--text); border: 1px solid var(--line); }
 .btn-sm { font-size: 13px; min-height: 36px; padding: 8px 16px; }
 @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .crow { flex-wrap: wrap; row-gap: 10px; }
+  .crow .btn { margin-left: 0; }
+  .hero-photo { max-width: 260px; }
+}
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13px; }
 .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
 .foot button { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 10px 20px; font: inherit; display: inline-flex; gap: 8px; align-items: center; min-height: 44px; cursor: pointer; }
