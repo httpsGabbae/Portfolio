@@ -24,6 +24,7 @@
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
     scrollTo = (target) => lenis.scrollTo(target, { offset: 0 });
+    window.__lenisTo = (el) => lenis.scrollTo(el);
     document.addEventListener("click", (e) => {
       const a = e.target.closest('a[href^="#"]');
       if (!a) return;
@@ -35,6 +36,28 @@
     }
     setTimeout(() => ScrollTrigger.refresh(), 400);
   }
+
+  /* ---------- Theme (dark default, persisted) ---------- */
+  const themeBtn = $("#themeBtn");
+  const paintTheme = () => {
+    const light = document.documentElement.dataset.theme === "light";
+    if (themeBtn) {
+      themeBtn.setAttribute("aria-label", light ? "Switch to dark mode" : "Switch to light mode");
+      $("#iconSun").style.display = light ? "none" : "";
+      $("#iconMoon").style.display = light ? "" : "none";
+    }
+  };
+  try {
+    if (localStorage.getItem("v2-theme") === "light") document.documentElement.dataset.theme = "light";
+  } catch (_) {}
+  paintTheme();
+  if (themeBtn) themeBtn.addEventListener("click", () => {
+    const light = document.documentElement.dataset.theme !== "light";
+    if (light) document.documentElement.dataset.theme = "light";
+    else document.documentElement.removeAttribute("data-theme");
+    try { localStorage.setItem("v2-theme", light ? "light" : "dark"); } catch (_) {}
+    paintTheme();
+  });
 
   /* ---------- Nav state + mobile menu ---------- */
   const nav = $("#nav");
@@ -57,6 +80,7 @@
     const dot = $(".cursor-dot"), ring = $(".cursor-ring");
     let x = -100, y = -100, rx = -100, ry = -100;
     window.addEventListener("pointermove", (e) => {
+      document.body.classList.add("cursor-on");
       x = e.clientX; y = e.clientY;
       const view = e.target.closest && e.target.closest("[data-cursor='view']");
       const link = e.target.closest && e.target.closest("a,button");
@@ -262,7 +286,9 @@
       if (r.type === "rate" || r.type === "contact") {
         setTimeout(() => {
           const c = $("#contact");
-          if (c) c.scrollIntoView({ behavior: "smooth" });
+          if (!c) return;
+          if (window.__lenisTo) window.__lenisTo(c);
+          else c.scrollIntoView({ behavior: "smooth" });
         }, 900);
       }
     }, 350);
@@ -287,5 +313,26 @@
     const q = input.value;
     input.value = "";
     ask(q);
+  });
+
+  /* ---------- Contact form (demo + mailto fallback) ---------- */
+  const cf = $("#contactForm");
+  if (cf) cf.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!cf.checkValidity()) { cf.reportValidity(); return; }
+    const n = $("#cfName").value, m = $("#cfEmail").value, t = $("#cfMsg").value;
+    const subject = encodeURIComponent("Portfolio inquiry from " + (n || "visitor"));
+    const body = encodeURIComponent((t || "") + "\n\n— " + n + " (" + m + ")");
+    $("#cfOk").hidden = false;
+    cf.reset();
+    window.location.href = "mailto:j.doruca109@gmail.com?subject=" + subject + "&body=" + body;
+  });
+  const copyBtn = $("#copyEmail");
+  if (copyBtn) copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("j.doruca109@gmail.com");
+      copyBtn.textContent = "Copied ✓";
+      setTimeout(() => { copyBtn.textContent = "Copy email"; }, 1500);
+    } catch (_) {}
   });
 })();
