@@ -61,7 +61,23 @@
 
   /* ---------- Nav state + mobile menu ---------- */
   const nav = $("#nav");
-  const onScrollPos = (y) => nav && nav.classList.toggle("scrolled", y > 40);
+  const rail = $(".progress");
+  const photos = [$(".hero-photo"), $(".about-photo"), $(".contact-photo")].filter(Boolean);
+  let idleTimer = 0;
+  const onScrollPos = (y) => {
+    if (nav) nav.classList.toggle("scrolled", y > 40);
+    if (rail) {
+      rail.classList.remove("is-idle");
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => rail.classList.add("is-idle"), 1200);
+    }
+    const near = photos.some((el) => {
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.85 && r.bottom > window.innerHeight * 0.15 &&
+        r.right > window.innerWidth - 170 && r.left < window.innerWidth;
+    });
+    document.body.classList.toggle("photo-near", near);
+  };
   window.addEventListener("scroll", () => onScrollPos(window.scrollY), { passive: true });
   onScrollPos(window.scrollY);
   const burger = $("#burger"), menu = $("#mobileMenu");
@@ -78,9 +94,12 @@
   /* ---------- Custom cursor ---------- */
   if (fine && !reduced) {
     const dot = $(".cursor-dot"), ring = $(".cursor-ring");
-    let x = -100, y = -100, rx = -100, ry = -100;
+    let x = -100, y = -100, rx = -100, ry = -100, cursorTimer = 0;
     window.addEventListener("pointermove", (e) => {
       document.body.classList.add("cursor-on");
+      document.body.classList.remove("cursor-idle");
+      clearTimeout(cursorTimer);
+      cursorTimer = setTimeout(() => document.body.classList.add("cursor-idle"), 2500);
       x = e.clientX; y = e.clientY;
       const view = e.target.closest && e.target.closest("[data-cursor='view']");
       const link = e.target.closest && e.target.closest("a,button");
