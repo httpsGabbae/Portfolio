@@ -386,3 +386,47 @@ footer{position:relative;z-index:1;background:transparent;border-top:1px solid v
 @media(hover:none),(pointer:coarse){
   .scene-blob,.scene-spot{display:none}
 }
+/* YANZ-INSPIRED — gate + display + marquee + stickers + slider (original content, cyan theme) */
+.enter-gate{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:radial-gradient(800px 500px at 50% 20%,rgba(34,211,238,.14),transparent 60%),var(--canvas)}
+.enter-gate[hidden]{display:none}
+.enter-gate-in{text-align:center;padding:32px;display:grid;gap:14px;justify-items:center;max-width:640px}
+.display-xl{font-family:var(--font-display);font-size:clamp(48px,8vw,88px);line-height:.95;letter-spacing:-.05em;margin:0}
+.enter-kicker{color:var(--link);margin:0;letter-spacing:.14em}
+.enter-sub{color:var(--body);margin:0}
+.enter-hint{color:var(--mute);margin:0}
+body.gate-open{overflow:hidden}
+body.gate-open,body.gate-open a,body.gate-open button,body.gate-open input,body.gate-open textarea,body.gate-open label{cursor:auto}
+body.gate-open .cursor{display:none!important}
+.enter-gate{cursor:auto}
+.enter-gate button{cursor:pointer}
+.marquee{position:relative;z-index:1;overflow:hidden;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:color-mix(in srgb,var(--canvas-soft) 82%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:mq 22s linear infinite;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;color:var(--body);padding:10px 0}
+.marquee-track span{white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
+.sec-index{color:var(--link);letter-spacing:.14em}
+.avail-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px rgba(74,222,128,.8);margin-right:8px;animation:pulse 1.8s infinite;vertical-align:1px}
+@keyframes pulse{50%{opacity:.4}}
+.stickers{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.sticker{position:absolute;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;border:1px solid var(--hairline-strong);border-radius:999px;padding:8px 14px;color:var(--body);background:color-mix(in srgb,var(--canvas-soft) 80%,transparent);backdrop-filter:blur(8px);will-change:translate}
+.sticker-a{top:16%;right:6%;transform:rotate(8deg)}
+.sticker-b{bottom:14%;left:4%;transform:rotate(-6deg)}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+@media(hover:none),(pointer:coarse){.sticker-b{display:none}}
+.process{margin-bottom:4px}
+.slider{overflow:hidden;display:grid;gap:12px}
+.slides{display:flex;transition:transform .45s cubic-bezier(.21,1.02,.73,1)}
+.slides .card{min-width:100%;margin:0}
+.slider-bar{display:flex;align-items:center;gap:12px}
+.slider-bar .mono{color:var(--mute)}
+.big-cta{margin-top:28px;text-align:left;gap:14px;background:radial-gradient(600px 300px at 20% 0%,rgba(34,211,238,.12),transparent 60%),color-mix(in srgb,var(--canvas-soft) 80%,transparent)}
+.big-cta .display-xl{font-size:clamp(40px,6vw,72px)}
+.archive{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.atile{position:relative;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--canvas-soft-2);text-decoration:none;box-shadow:var(--sh-1);transition:transform 220ms var(--ease),box-shadow 220ms var(--ease),border-color 220ms}
+.atile img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.atile-n{position:absolute;top:10px;left:12px;color:var(--link);font-size:12px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.atile-b{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:12px 14px;border-top:1px solid var(--hairline)}
+.atile-b strong{color:var(--ink);font-size:15px;letter-spacing:-.02em}
+.atile-b .mono{color:var(--mute);font-size:11px}
+@media(hover:hover) and (pointer:fine){.atile:hover{transform:translateY(-4px);box-shadow:var(--sh-3);border-color:rgba(34,211,238,.28)}.atile:hover img{transform:scale(1.04)}}
+@media(max-width:640px){.archive{grid-template-columns:1fr}}

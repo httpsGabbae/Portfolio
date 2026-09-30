@@ -17,6 +17,16 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305070b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' fill='%2322d3ee' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 </head>
 <body>
+<div class="enter-gate" id="enterGate" role="dialog" aria-modal="true" aria-label="Enter portfolio">
+<div class="enter-gate-in">
+<p class="mono enter-kicker">GABBAE · FULL-STACK PORTFOLIO</p>
+<h2 class="display-xl">ENTER THE<br>PORTFOLIO</h2>
+<p class="enter-sub">Original systems work — no sound, no autoplay.</p>
+<button class="btn btn-dark btn-lg" id="enterBtn" type="button">Enter the portfolio →</button>
+<p class="mono enter-hint">Press Enter or click to enter · Esc skips</p>
+</div>
+</div>
+<noscript><style>.enter-gate{display:none!important}</style></noscript>
 <div class="scene" aria-hidden="true">
   <div class="scene-grid" id="sceneGrid"></div>
   <div class="scene-spot" id="sceneSpot"></div>
@@ -79,7 +89,7 @@
 <section class="hero" id="home">
 <div class="wrap hero-grid">
 <div class="reveal">
-<p class="eyebrow" data-hero>Lipa City, PH · BSCS</p>
+<p class="eyebrow" data-hero><span class="avail-dot" aria-hidden="true"></span> Available for projects · Lipa City, PH</p>
 <div class="banner" data-hero><span class="pill-new">New</span> LMS Code Compiler — Monaco + Judge0 classroom IDE.</div>
 <h1 data-hero>John Aldrin Doruca. <span class="accent">Full-stack systems that work.</span></h1>
 <p class="title-line" data-hero>Aspiring Full Stack Developer</p>
@@ -89,6 +99,7 @@
 <a href="#contact" class="btn btn-lg btn-light">Contact me</a>
 </div>
 <p class="mono meta-line" data-hero>BSCS 2nd year · PHP / MySQL / Supabase · 4 featured projects</p>
+<p class="mono meta-line" data-hero>Based in Lipa City, PH · Working worldwide · Scroll for more ↓</p>
 </div>
 <div class="reveal" style="--d:80ms" data-hero>
 <div class="profile-card">
@@ -109,12 +120,14 @@
 </div>
 </div>
 <div class="wrap"><div class="strip mono" aria-label="Stack strip"><span>PHP 8.x</span><span>MySQL</span><span>Supabase</span><span>Laravel basics</span><span>HTML / CSS / JS</span><span>GitHub</span></div></div>
+<div class="stickers" aria-hidden="true"><span class="sticker sticker-a" data-float>OPEN TO WORK • SHIP REAL SYSTEMS •</span><span class="sticker sticker-b" data-float>PHP • MYSQL • SUPABASE •</span></div>
 </section>
+<div class="marquee" aria-label="Available worldwide"><div class="marquee-track"><span>PHP 8.x • MYSQL • SUPABASE • LARAVEL BASICS • CLASSROOM IDE • AVAILABLE WORLDWIDE •&nbsp;</span><span aria-hidden="true">PHP 8.x • MYSQL • SUPABASE • LARAVEL BASICS • CLASSROOM IDE • AVAILABLE WORLDWIDE •&nbsp;</span></div></div>
 
 <!-- ABOUT -->
 <section class="band-soft" id="about">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/about</p><h2>About me.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">02 /</span> Behind the work</p><h2>About me.</h2></div>
 <p class="sec-sub">BSCS student who learns by shipping real school systems, not tutorials.</p></div>
 <div class="about-grid">
 <div class="card pad reveal">
@@ -134,7 +147,7 @@
 <!-- SKILLS -->
 <section id="skills">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/skills</p><h2>Tech I ship with.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">03 /</span> What I do</p><h2>Tech I ship with.</h2></div>
 <div class="skills-side"><p class="sec-sub">Boring stack, working software. Six skills and counting.</p>
 <figure class="donut-wrap" aria-label="Skill mix">
 <div class="donut-box"><svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Skill mix donut chart"><circle cx="60" cy="60" r="44" style="stroke:var(--link)" stroke-dasharray="59.42 276.46" stroke-dashoffset="0"/><circle cx="60" cy="60" r="44" style="stroke:var(--ink)" stroke-dasharray="58.13 276.46" stroke-dashoffset="-59.42"/><circle cx="60" cy="60" r="44" style="stroke:var(--body)" stroke-dasharray="56.84 276.46" stroke-dashoffset="-117.55"/><circle cx="60" cy="60" r="44" style="stroke:var(--mute)" stroke-dasharray="51.68 276.46" stroke-dashoffset="-174.39"/><circle cx="60" cy="60" r="44" style="stroke:var(--hairline-strong)" stroke-dasharray="50.38 276.46" stroke-dashoffset="-226.07"/></svg><div class="donut-center"><strong>6</strong><span class="mono">skills</span></div></div>
@@ -166,7 +179,7 @@
 <!-- PROJECTS -->
 <section class="band-soft" id="projects">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/projects</p><h2>Selected work.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">01 /</span> Projects</p><h2>Selected work.</h2></div>
 <p class="sec-sub">Finished and shipped — each solves a different problem.</p></div>
 <div class="plist">
 <article class="card prow reveal" style="--d:60ms"><div class="prow-thumb"><img src="assets/img/fitnesshub-pro.svg" alt="FitnessHub gym system" loading="lazy" width="800" height="450"></div>
@@ -184,15 +197,29 @@
 <a class="inline" href="https://github.com/httpsGabbae/LearnEngageWebsite" target="_blank" rel="noopener"><svg width="13" height="13"><use href="#i-github"/></svg>View on GitHub <svg width="12" height="12"><use href="#i-arrow"/></svg></a>
 </div></article>
 </div>
+<div class="archive reveal" aria-label="Project archive">
+<a class="atile" href="https://github.com/httpsGabbae/fitnesshub" target="_blank" rel="noopener"><span class="atile-n mono">01</span><img src="assets/img/fitnesshub-pro.svg" alt="FitnessHub gym system" loading="lazy" width="800" height="450"><span class="atile-b"><strong>FitnessHub</strong><span class="mono">PHP · MySQL · Bootstrap</span></span></a>
+<a class="atile" href="https://github.com/httpsGabbae/LearnEngageWebsite" target="_blank" rel="noopener"><span class="atile-n mono">02</span><img src="assets/img/snapfolio.svg" alt="LearnEngage website" loading="lazy" width="800" height="450"><span class="atile-b"><strong>LearnEngage</strong><span class="mono">HTML · CSS · JavaScript</span></span></a>
+<a class="atile" href="https://github.com/httpsGabbae/Final-Lipa-City-Colleges-Pay-Roll-System" target="_blank" rel="noopener"><span class="atile-n mono">03</span><img src="assets/img/lcc-payroll.svg" alt="LCC Payroll System" loading="lazy" width="800" height="450"><span class="atile-b"><strong>LCC Payroll</strong><span class="mono">PHP · MySQL · FPDF</span></span></a>
+<a class="atile" href="https://github.com/httpsGabbae/LMS-Code-Compiler" target="_blank" rel="noopener"><span class="atile-n mono">04</span><img src="assets/img/laravel-rebuild.svg" alt="LMS Code Compiler" loading="lazy" width="800" height="450"><span class="atile-b"><strong>LMS Compiler</strong><span class="mono">Monaco · Judge0 · PHP</span></span></a>
+</div>
 </div>
 </section>
 
 <!-- IN PROGRESS -->
 <section class="band-soft" id="inprogress">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/in-progress</p><h2>Currently building.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">04 /</span> How I work</p><h2>Currently building.</h2></div>
 <p class="sec-sub">Actively in development — shipping soon.</p></div>
-<div class="plist">
+<div class="process grid3 reveal" aria-label="How I work">
+<div class="card pad"><p class="mono-label">01 Diagnose</p><strong>Figure out the real problem.</strong><p>Requirements, users, friction in the current manual flow.</p></div>
+<div class="card pad"><p class="mono-label">02 Map</p><strong>Path before pages.</strong><p>Roles, CRUD, auth, and happy-path screens.</p></div>
+<div class="card pad"><p class="mono-label">03 Design</p><strong>Clear hierarchy.</strong><p>Bootstrap layouts, readable tables, working forms.</p></div>
+<div class="card pad"><p class="mono-label">04 Build</p><strong>Ship the system.</strong><p>PHP + MySQL on XAMPP, Supabase where it fits.</p></div>
+<div class="card pad"><p class="mono-label">05 Connect</p><strong>Nothing breaks after click.</strong><p>Sessions, validation, PDF exports, Judge0 runs.</p></div>
+<div class="card pad"><p class="mono-label">06 Launch</p><strong>Test, break, fix.</strong><p>Desktop + mobile checks before demo day.</p></div>
+</div>
+<div class="plist" style="margin-top:16px">
 <article class="card prow reveal"><div class="prow-thumb"><img src="assets/img/lcc-payroll.svg" alt="LCC Payroll System" loading="lazy" width="800" height="450"></div>
 <div class="prow-b"><span class="badge-pending" style="align-self:flex-start">In progress</span><div class="stackicons"><span><svg width="13" height="13"><use href="#i-code"/></svg>PHP</span><span><svg width="13" height="13"><use href="#i-db"/></svg>MySQL</span><span><svg width="13" height="13"><use href="#i-file"/></svg>FPDF</span></div>
 <h3>Final LCC Payroll System.</h3>
@@ -214,12 +241,15 @@
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/achievements</p><h2>Proof, not promises.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">05 /</span> Results</p><h2>Proof, not promises.</h2></div>
 <p class="sec-sub">Hackathons, events, and systems in real use.</p></div>
-<div class="grid3">
-<div class="card pad reveal"><p class="mono-label">Hackathon</p><strong>3rd Place — Department Hackathon</strong><p>Placed third competing with fellow BSCS teams at Lipa City Colleges.</p><p class="mono card-meta">Lipa City Colleges</p></div>
-<div class="card pad reveal card-pending" style="--d:60ms"><p class="mono-label">Certification · <span class="badge-pending">Copy pending</span></p><strong>SMX PCTA Event — Certificate</strong><p>Certificate title, date, and file to follow — placeholder until the copy arrives.</p><p class="mono card-meta">SMX · PCTA</p></div>
-<div class="card pad reveal" style="--d:120ms"><p class="mono-label">In production</p><strong>First Production System</strong><p>LCC Payroll — employee records, payroll runs, and one-click PDF payslips built for the school.</p><p class="mono card-meta">PHP · MySQL · FPDF</p></div>
+<div class="slider reveal" role="region" aria-roledescription="carousel" aria-label="Results">
+<div class="slides" id="slides">
+<div class="card pad"><p class="mono-label">Hackathon</p><strong>3rd Place — Department Hackathon</strong><p>Placed third competing with fellow BSCS teams at Lipa City Colleges.</p><p class="mono card-meta">Lipa City Colleges</p></div>
+<div class="card pad card-pending"><p class="mono-label">Certification · <span class="badge-pending">Copy pending</span></p><strong>SMX PCTA Event — Certificate</strong><p>Certificate title, date, and file to follow — placeholder until the copy arrives.</p><p class="mono card-meta">SMX · PCTA</p></div>
+<div class="card pad"><p class="mono-label">In production</p><strong>First Production System</strong><p>LCC Payroll — employee records, payroll runs, and one-click PDF payslips built for the school.</p><p class="mono card-meta">PHP · MySQL · FPDF</p></div>
+</div>
+<div class="slider-bar"><button class="icon-btn" id="prevSlide" type="button" aria-label="Previous slide">←</button><span class="mono" id="slideCount">01 / 03</span><button class="icon-btn" id="nextSlide" type="button" aria-label="Next slide">→</button></div>
 </div>
 </div>
 </section>
@@ -227,7 +257,7 @@
 <!-- CONTACT -->
 <section class="band-soft" id="contact">
 <div class="wrap">
-<div class="sec-head reveal"><div><p class="eyebrow">~/contact</p><h2>Say hi — let's talk.</h2></div>
+<div class="sec-head reveal"><div><p class="eyebrow"><span class="sec-index">06 /</span> Contact</p><h2>Say hi — let's talk.</h2></div>
 <p class="sec-sub">Form is demo + mailto fallback. GitHub is fastest.</p></div>
 <div class="contact-grid">
 <div class="stack reveal">
@@ -245,6 +275,7 @@
 <p class="form-ok" id="formMsg" hidden><svg width="13" height="13"><use href="#i-check"/></svg><span>Thanks! Opening your mail app — or reach me at j.doruca109@gmail.com.</span></p>
 </form>
 </div>
+<div class="big-cta card pad reveal"><p class="eyebrow"><span class="sec-index">Got a system worth shipping?</span></p><h2 class="display-xl">LET'S BUILD IT.</h2><p class="sec-sub">Payroll, gym, classroom tools — if it has users and data, I'll turn it into working software.</p><div class="cta-row"><a class="btn btn-dark btn-lg" href="mailto:j.doruca109@gmail.com?subject=Portfolio%20project%20inquiry">Work with me →</a><a class="btn btn-light btn-lg" href="#projects">See the proof</a></div></div>
 </div>
 </section>
 </main>

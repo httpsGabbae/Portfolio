@@ -1,6 +1,30 @@
 // Gabbae portfolio — vanilla JS, no deps
 (function () {
   "use strict";
+  /* ENTER GATE — no sound, session remember, reduced-motion skip */
+  try {
+    const gate = document.getElementById("enterGate");
+    const enterBtn = document.getElementById("enterBtn");
+    if (gate && enterBtn) {
+      const seen = sessionStorage.getItem("gabbae-entered");
+      const reduceGate = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.body.classList.add("gate-open");
+      const dismissGate = () => {
+        if (gate.hidden) return;
+        gate.hidden = true;
+        document.body.classList.remove("gate-open");
+        try { sessionStorage.setItem("gabbae-entered", "1"); } catch {}
+      };
+      if (seen || reduceGate) dismissGate();
+      enterBtn.addEventListener("click", dismissGate);
+      gate.addEventListener("click", (e) => { if (e.target === gate) dismissGate(); });
+      document.addEventListener("keydown", (e) => {
+        if (gate.hidden) return;
+        if (e.key === "Enter" || e.key === "Escape") dismissGate();
+      });
+      setTimeout(() => { if (!gate.hidden) enterBtn.focus(); }, 60);
+    }
+  } catch {}
   const $ = (s, c = document) => c.querySelector(s),
     $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -459,4 +483,60 @@
       );
     });
   }
+
+  /* YANZ-INSPIRED — sticker parallax + results slider + magnetic buttons */
+  try {
+    const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!reduced && fine) {
+      const floats = [...document.querySelectorAll("[data-float]")];
+      if (floats.length) {
+        addEventListener("pointermove", (e) => {
+          floats.forEach((el, i) => {
+            const f = (i + 1) * 10;
+            const x = (e.clientX / innerWidth - 0.5) * f;
+            const y = (e.clientY / innerHeight - 0.5) * f;
+            el.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+          });
+        }, { passive: true });
+      }
+      $$(".btn-dark").forEach((b) => {
+        b.addEventListener("pointermove", (e) => {
+          const r = b.getBoundingClientRect();
+          const x = (e.clientX - r.left - r.width / 2) * 0.08;
+          const y = (e.clientY - r.top - r.height / 2) * 0.12;
+          b.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+        });
+        b.addEventListener("pointerleave", () => { b.style.translate = "0px 0px"; });
+      });
+    }
+  } catch {}
+  try {
+    const slides = $("#slides");
+    const count = $("#slideCount");
+    const prev = $("#prevSlide");
+    const next = $("#nextSlide");
+    if (slides && count) {
+      const total = slides.children.length;
+      let idx = 0;
+      const pad = (n) => String(n).padStart(2, "0");
+      const go = (i) => {
+        idx = (i + total) % total;
+        slides.style.transform = `translateX(-${idx * 100}%)`;
+        count.textContent = `${pad(idx + 1)} / ${pad(total)}`;
+      };
+      prev?.addEventListener("click", () => go(idx - 1));
+      next?.addEventListener("click", () => go(idx + 1));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") go(idx - 1);
+        if (e.key === "ArrowRight") go(idx + 1);
+      });
+      let tx0 = 0;
+      slides.addEventListener("touchstart", (e) => { tx0 = e.touches[0].clientX; }, { passive: true });
+      slides.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - tx0;
+        if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+      go(0);
+    }
+  } catch {}
 })();

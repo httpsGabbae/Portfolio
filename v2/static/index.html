@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Creative developer portfolio — interactive experiences, web applications, and thoughtful interfaces." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' fill='%2322D3EE' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+<title>YOUR NAME — Creative Developer</title>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><span>VIEW</span></div>
+
+<div class="progress" aria-hidden="true">
+  <small id="progressLabel">01 / 09</small>
+  <div class="bar"><i id="progressFill"></i></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">YOUR NAME<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#contact">Start a project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg id="burgerOpen" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg id="burgerClose" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile" hidden>
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap" id="top" data-sec>
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-core">
+      <p class="status hero-fade"><i></i>AVAILABLE FOR PROJECTS</p>
+      <h1 class="giant">
+        <span class="mask"><span class="mask-in">Creative</span></span>
+        <span class="mask"><span class="mask-in">Developer</span></span>
+        <span class="mask"><span class="mask-in outline">&amp; Designer</span></span>
+      </h1>
+      <p class="hero-sub hero-fade">I build digital experiences that combine thoughtful design, interactive technology, and meaningful user experiences.</p>
+      <div class="hero-row hero-fade">
+        <a class="btn btn-solid" href="#work">View my work <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="btn" href="#about">More about me</a>
+      </div>
+      <div class="scroll-hint hero-fade"><span>Scroll to explore</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+    </div>
+  </section>
+
+  <!-- WORK HEADER -->
+  <section class="work-head wrap" data-sec aria-label="Selected work">
+    <p class="kicker"><b>01</b> — Selected work</p>
+    <h2 class="giant drift">Selected</h2>
+    <h2 class="giant drift ghost">Work</h2>
+  </section>
+
+  <!-- PINNED SHOWCASE -->
+  <section id="work" data-sec aria-label="Project showcase">
+    <div class="stage-pin" id="stagePin">
+      <div class="stage" id="stage">
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">01</div>
+            <h3>Payroll Management System</h3>
+            <p class="shot-meta">Web Application / UI Design — 2026</p>
+            <p class="desc">A complete payroll platform replacing manual computation and paper payslips — employee records, payroll runs, attendance, and one-click PDF reports.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span><span>PDF Reports</span></div>
+            <a class="btn" href="#contact">View project <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual" data-cursor="view" style="--hue:190">
+            <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="visual-body" aria-hidden="true"><b style="width:42%"></b><b style="width:88%"></b><b style="width:71%"></b><b style="width:55%"></b></div>
+            <span class="visual-glyph" aria-hidden="true">01</span>
+          </div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">02</div>
+            <h3>Fitness Management Platform</h3>
+            <p class="shot-meta">Web Application / UX Design — 2025</p>
+            <p class="desc">Role-based gym management with member dashboards, trainer discovery, and payment tracking — from spreadsheet chaos to a working system.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+            <a class="btn" href="#contact">View project <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual" data-cursor="view" style="--hue:165">
+            <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="visual-body" aria-hidden="true"><b style="width:55%"></b><b style="width:80%"></b><b style="width:64%"></b><b style="width:47%"></b></div>
+            <span class="visual-glyph" aria-hidden="true">02</span>
+          </div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">03</div>
+            <h3>Classroom Code Compiler</h3>
+            <p class="shot-meta">Developer Tool / Web App — 2025</p>
+            <p class="desc">A browser-based classroom IDE with a full code editor, multi-language execution, live snapshots for instructors, and frozen submissions.</p>
+            <div class="tags"><span>Monaco</span><span>Judge0</span><span>PHP</span></div>
+            <a class="btn" href="#contact">View project <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual" data-cursor="view" style="--hue:205">
+            <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="visual-body" aria-hidden="true"><b style="width:68%"></b><b style="width:52%"></b><b style="width:84%"></b><b style="width:60%"></b></div>
+            <span class="visual-glyph" aria-hidden="true">03</span>
+          </div>
+        </article>
+        <article class="shot" data-shot>
+          <div class="shot-copy">
+            <div class="shot-num" aria-hidden="true">04</div>
+            <h3>Learning Engagement Platform</h3>
+            <p class="shot-meta">Frontend / Interaction — 2024</p>
+            <p class="desc">An interactive learning flow with scored questions, study guidance, and printable certificates — built as a pure frontend experience.</p>
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a class="btn" href="#contact">View project <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+          </div>
+          <div class="visual" data-cursor="view" style="--hue:175">
+            <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="visual-body" aria-hidden="true"><b style="width:48%"></b><b style="width:76%"></b><b style="width:66%"></b><b style="width:58%"></b></div>
+            <span class="visual-glyph" aria-hidden="true">04</span>
+          </div>
+        </article>
+        <div class="stage-count" aria-hidden="true"><span id="stageCount">01 / 04</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORIZONTAL ARCHIVE -->
+  <section class="hwrap" data-sec aria-label="Project archive" id="archive" style="padding:14vh 0">
+    <div class="wrap" style="margin-bottom:48px">
+      <p class="kicker"><b>02</b> — Archive, scroll-driven</p>
+    </div>
+    <div class="htrack" id="htrack">
+      <article class="hcard">
+        <div class="visual" data-cursor="view" style="--hue:190">
+          <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="visual-body" aria-hidden="true"><b style="width:42%"></b><b style="width:88%"></b><b style="width:71%"></b></div>
+          <span class="visual-glyph" aria-hidden="true">P</span>
+        </div>
+        <p class="shot-meta" style="margin-top:18px">01 — Web Application / UI Design · 2026</p>
+        <h3 class="hcard-title">Payroll Management System</h3>
+        <a class="btn" style="margin-top:18px" href="#contact">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual" data-cursor="view" style="--hue:165">
+          <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="visual-body" aria-hidden="true"><b style="width:55%"></b><b style="width:80%"></b><b style="width:64%"></b></div>
+          <span class="visual-glyph" aria-hidden="true">F</span>
+        </div>
+        <p class="shot-meta" style="margin-top:18px">02 — Web Application / UX Design · 2025</p>
+        <h3 class="hcard-title">Fitness Management Platform</h3>
+        <a class="btn" style="margin-top:18px" href="#contact">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual" data-cursor="view" style="--hue:205">
+          <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="visual-body" aria-hidden="true"><b style="width:68%"></b><b style="width:52%"></b><b style="width:84%"></b></div>
+          <span class="visual-glyph" aria-hidden="true">C</span>
+        </div>
+        <p class="shot-meta" style="margin-top:18px">03 — Developer Tool / Web App · 2025</p>
+        <h3 class="hcard-title">Classroom Code Compiler</h3>
+        <a class="btn" style="margin-top:18px" href="#contact">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+      <article class="hcard">
+        <div class="visual" data-cursor="view" style="--hue:175">
+          <div class="visual-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="visual-body" aria-hidden="true"><b style="width:48%"></b><b style="width:76%"></b><b style="width:66%"></b></div>
+          <span class="visual-glyph" aria-hidden="true">L</span>
+        </div>
+        <p class="shot-meta" style="margin-top:18px">04 — Frontend / Interaction · 2024</p>
+        <h3 class="hcard-title">Learning Engagement Platform</h3>
+        <a class="btn" style="margin-top:18px" href="#contact">View <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+      </article>
+    </div>
+    <div class="hbar" aria-hidden="true"><i id="hfill"></i></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-sec class="about wrap">
+    <p class="kicker"><b>03</b> — About</p>
+    <h2 class="about-big">
+      <span class="reveal-line">I design and build digital experiences </span>
+      <span class="reveal-line">that are simple, useful, </span>
+      <span class="reveal-line">and memorable.</span>
+    </h2>
+    <div class="about-grid">
+      <div class="about-cell"><h4>01 — Design</h4><p>Interfaces with clear hierarchy, readable at a glance, intentional in every detail.</p></div>
+      <div class="about-cell"><h4>02 — Development</h4><p>Full-stack applications with solid data flows, auth, and real deployments.</p></div>
+      <div class="about-cell"><h4>03 — Interaction</h4><p>Scroll, motion, and feedback that guide attention instead of showing off.</p></div>
+      <div class="about-cell"><h4>04 — Experience</h4><p>Simple, useful, memorable — software people enjoy returning to.</p></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" data-sec class="services wrap">
+    <p class="kicker"><b>04</b> — Services</p>
+    <div>
+      <div class="svc"><a class="svc-row" href="#contact"><span class="n">01</span><h3>UI / UX Design<small>Interfaces with clear hierarchy</small></h3><svg class="go" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <div class="svc"><a class="svc-row" href="#contact"><span class="n">02</span><h3>Web Development<small>Full-stack applications</small></h3><svg class="go" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <div class="svc"><a class="svc-row" href="#contact"><span class="n">03</span><h3>Interactive Experiences<small>Motion and scroll storytelling</small></h3><svg class="go" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <div class="svc"><a class="svc-row" href="#contact"><span class="n">04</span><h3>System Development<small>CRUD, auth, and data flows</small></h3><svg class="go" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+      <div class="svc"><a class="svc-row" href="#contact"><span class="n">05</span><h3>Creative Development<small>Prototypes and experiments</small></h3><svg class="go" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section data-sec class="process wrap" aria-label="Workflow">
+    <p class="kicker"><b>05</b> — Process</p>
+    <div>
+      <div class="step"><span class="n">01</span><div><h3>Discover</h3><p>Understand the problem and the people.</p></div></div>
+      <div class="step"><span class="n">02</span><div><h3>Plan</h3><p>Map the journey before building.</p></div></div>
+      <div class="step"><span class="n">03</span><div><h3>Design</h3><p>Hierarchy, clarity, intent.</p></div></div>
+      <div class="step"><span class="n">04</span><div><h3>Build</h3><p>Ship working software.</p></div></div>
+      <div class="step"><span class="n">05</span><div><h3>Test</h3><p>Break it, fix it, verify.</p></div></div>
+      <div class="step"><span class="n">06</span><div><h3>Launch</h3><p>Release and observe.</p></div></div>
+    </div>
+  </section>
+
+  <!-- BIG TYPE -->
+  <section data-sec aria-hidden="true" style="padding:10vh 0;overflow:clip">
+    <div class="wrap">
+      <div class="giant drift">Design</div>
+      <div class="giant drift ghost">Build</div>
+      <div class="giant drift">Create</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" data-sec class="contact wrap">
+    <p class="kicker"><b>06</b> — Contact</p>
+    <h2 class="giant">
+      <span class="mask"><span class="mask-in">Let&apos;s</span></span>
+      <span class="mask"><span class="mask-in">Work</span></span>
+      <span class="mask"><span class="mask-in"><a href="mailto:hello@example.com">Together.</a></span></span>
+    </h2>
+    <p class="hero-sub">Have a project in mind? Tell me about it.</p>
+    <div class="hero-row">
+      <a class="btn btn-solid" href="mailto:hello@example.com">Start a conversation <svg class="arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:hello@example.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>hello@example.com</a>
+      <a href="https://github.com/" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>YOUR NAME — Based in the Philippines</span>
+    <span>© 2026 YOUR NAME</span>
+    <button type="button" id="toTop">Back to top <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
