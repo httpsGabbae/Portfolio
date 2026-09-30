@@ -413,13 +413,16 @@
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending…";
     let emailed = false, saved = false;
+    const FORWARDS = ["gabbae.dev@gmail.com", "j.doruca109@gmail.com"];
     try {
-      const r = await fetch("https://formsubmit.co/ajax/gabbae.dev@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ name: n, email: m, message: t, _subject: "New portfolio message from " + n })
-      });
-      emailed = r.ok;
+      const results = await Promise.all(FORWARDS.map((addr) =>
+        fetch("https://formsubmit.co/ajax/" + addr, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ name: n, email: m, message: t, _subject: "New portfolio message from " + n })
+        }).then((r) => r.ok).catch(() => false)
+      ));
+      emailed = results.some(Boolean);
     } catch (_) {}
     if (window.supabase) {
       try {
