@@ -402,42 +402,40 @@
     ask(q);
   });
 
-  /* ---------- Contact form (Supabase inbox + mailto fallback) ---------- */
+  /* ---------- Contact form (Supabase inbox + Gmail forward, no popups) ---------- */
   const cf = $("#contactForm");
-  if (cf) cf.addEventListener("submit", (e) => {
+  if (cf) cf.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!cf.checkValidity()) { cf.reportValidity(); return; }
     const n = $("#cfName").value.trim(), m = $("#cfEmail").value.trim(), t = $("#cfMsg").value.trim();
     const sendBtn = $("#cfSend");
-    const okNote = (msg) => { $("#cfOk").textContent = msg; $("#cfOk").hidden = false; };
-    const mailtoFallback = () => {
-      const subject = encodeURIComponent("Portfolio inquiry from " + (n || "visitor"));
-      const body = encodeURIComponent((t || "") + "\n\n— " + n + " (" + m + ")");
-      okNote("Thanks! Opening your mail app — or reach me at j.doruca109@gmail.com.");
-      window.location.href = "mailto:j.doruca109@gmail.com?subject=" + subject + "&body=" + body;
-    };
+    const okNote = (msg) => { const el = $("#cfOk"); el.textContent = msg; el.hidden = false; };
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending…";
-    const done = () => { cf.reset(); sendBtn.disabled = false; sendBtn.textContent = "Send message"; };
-    const notifyOwner = () => {
-      try {
-        fetch("https://formsubmit.co/ajax/gabbae.dev@gmail.com", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({ name: n, email: m, message: t, _subject: "New portfolio message from " + n })
-        }).catch(() => {});
-      } catch (_) {}
-    };
-    notifyOwner();
-    if (!window.supabase) { mailtoFallback(); done(); return; }
+    let emailed = false, saved = false;
     try {
-      const db = supabase.createClient("https://sbqxizjtgdfixvnwtbry.supabase.co", "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW");
-      db.from("messages").insert({ name: n, email: m, message: t }).then((res) => {
-        if (res.error) { mailtoFallback(); }
-        else { okNote("Message sent! I'll get back to you within a day."); }
-        done();
-      }).catch(() => { mailtoFallback(); done(); });
-    } catch (_) { mailtoFallback(); done(); }
+      const r = await fetch("https://formsubmit.co/ajax/gabbae.dev@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name: n, email: m, message: t, _subject: "New portfolio message from " + n })
+      });
+      emailed = r.ok;
+    } catch (_) {}
+    if (window.supabase) {
+      try {
+        const db = supabase.createClient("https://sbqxizjtgdfixvnwtbry.supabase.co", "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW");
+        const res = await db.from("messages").insert({ name: n, email: m, message: t });
+        saved = !res.error;
+      } catch (_) {}
+    }
+    if (emailed || saved) {
+      okNote("Message sent! I'll get back to you within a day.");
+      cf.reset();
+    } else {
+      okNote("Couldn't send just now — email me directly at j.doruca109@gmail.com.");
+    }
+    sendBtn.disabled = false;
+    sendBtn.textContent = "Send message";
   });
   const copyBtn = $("#copyEmail");
   if (copyBtn) copyBtn.addEventListener("click", async () => {
