@@ -265,10 +265,12 @@
       scrollTrigger: { trigger: card, start: "top 88%" },
     });
   });
-  gsap.fromTo(".contact .mask-in", { yPercent: 110 }, {
-    yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.12,
-    scrollTrigger: { trigger: ".contact", start: "top 72%" },
-  });
+  if ($$(".contact .mask-in").length) {
+    gsap.fromTo(".contact .mask-in", { yPercent: 110 }, {
+      yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.12,
+      scrollTrigger: { trigger: ".contact", start: "top 72%" },
+    });
+  }
 })();
 
 /* ---------- Gabbae Bot (same answers as the main portfolio; runs always) ---------- */
@@ -354,9 +356,10 @@
   const copyBtn = $("#copyEmail");
   if (copyBtn) copyBtn.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText("j.doruca109@gmail.com");
-      copyBtn.textContent = "Copied ✓";
-      setTimeout(() => { copyBtn.textContent = "Copy email"; }, 1500);
+      await navigator.clipboard.writeText(($("#emailText") ? $("#emailText").textContent : "j.doruca109@gmail.com").trim());
+      const original = copyBtn.innerHTML;
+      copyBtn.innerHTML = "Copied ✓";
+      setTimeout(() => { copyBtn.innerHTML = original; }, 1500);
     } catch (_) {}
   });
 })();
