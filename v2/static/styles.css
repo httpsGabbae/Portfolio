@@ -57,11 +57,13 @@ section { position: relative; }
 .kicker b { color: var(--accent); font-weight: 600; }
 
 .mask { overflow: hidden; display: block; }
-html.js .mask-in { display: block; transform: translateY(110%); }
-.mask-in { display: block; }
+/* Initial hidden state is set by GSAP (fromTo yPercent) — no CSS transform here,
+   or the two stack and headlines end up buried inside their masks. */
+html.js .mask-in { display: block; }
+.mask-in { display: block; will-change: transform; }
 
 .giant {
-  font-size: clamp(2.2rem, 6.5vw, 6rem);
+  font-size: clamp(2.1rem, 5.5vw, 5.25rem);
   line-height: 1; letter-spacing: -0.03em; text-transform: uppercase;
 }
 .giant.ghost, .drift.ghost { color: transparent; -webkit-text-stroke: 1px var(--muted); }
@@ -134,8 +136,8 @@ body.photo-near .progress { opacity: 0; }
               radial-gradient(500px 500px at 15% 80%, rgba(34,211,238,0.05), transparent 60%); }
 .hero h1 { text-transform: uppercase; }
 .hero h1 .outline { color: transparent; -webkit-text-stroke: 1px var(--muted); }
-.hero-sub { max-width: 560px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.2rem); margin: 28px 0; }
-.hero-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.hero-sub { max-width: 560px; color: var(--muted); font-size: clamp(0.95rem, 1.4vw, 1.1rem); margin: 20px 0; }
+.hero-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
 .status { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.22em; color: var(--muted); margin: 0 0 22px; }
 .status i { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 12px rgba(74,222,128,0.9); animation: pulse 1.8s infinite; }
 @keyframes pulse { 50% { opacity: 0.35; } }
