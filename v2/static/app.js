@@ -421,7 +421,7 @@
     const done = () => { cf.reset(); sendBtn.disabled = false; sendBtn.textContent = "Send message"; };
     if (!window.supabase) { mailtoFallback(); done(); return; }
     try {
-      const db = supabase.createClient("https://ezmamcufnxrbtuoiimwc.supabase.co", "sb_publishable_1XbX8bCKrcDdy6RwWQAUZg_E5IN-nDZ");
+      const db = supabase.createClient("https://sbqxizjtgdfixvnwtbry.supabase.co", "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW");
       db.from("messages").insert({ name: n, email: m, message: t }).then((res) => {
         if (res.error) { mailtoFallback(); }
         else { okNote("Message sent! I'll get back to you within a day."); }
