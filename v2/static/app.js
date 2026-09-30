@@ -402,17 +402,32 @@
     ask(q);
   });
 
-  /* ---------- Contact form (demo + mailto fallback) ---------- */
+  /* ---------- Contact form (Supabase inbox + mailto fallback) ---------- */
   const cf = $("#contactForm");
   if (cf) cf.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!cf.checkValidity()) { cf.reportValidity(); return; }
-    const n = $("#cfName").value, m = $("#cfEmail").value, t = $("#cfMsg").value;
-    const subject = encodeURIComponent("Portfolio inquiry from " + (n || "visitor"));
-    const body = encodeURIComponent((t || "") + "\n\n— " + n + " (" + m + ")");
-    $("#cfOk").hidden = false;
-    cf.reset();
-    window.location.href = "mailto:j.doruca109@gmail.com?subject=" + subject + "&body=" + body;
+    const n = $("#cfName").value.trim(), m = $("#cfEmail").value.trim(), t = $("#cfMsg").value.trim();
+    const sendBtn = $("#cfSend");
+    const okNote = (msg) => { $("#cfOk").textContent = msg; $("#cfOk").hidden = false; };
+    const mailtoFallback = () => {
+      const subject = encodeURIComponent("Portfolio inquiry from " + (n || "visitor"));
+      const body = encodeURIComponent((t || "") + "\n\n— " + n + " (" + m + ")");
+      okNote("Thanks! Opening your mail app — or reach me at j.doruca109@gmail.com.");
+      window.location.href = "mailto:j.doruca109@gmail.com?subject=" + subject + "&body=" + body;
+    };
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending…";
+    const done = () => { cf.reset(); sendBtn.disabled = false; sendBtn.textContent = "Send message"; };
+    if (!window.supabase) { mailtoFallback(); done(); return; }
+    try {
+      const db = supabase.createClient("https://ezmamcufnxrbtuoiimwc.supabase.co", "sb_publishable_1XbX8bCKrcDdy6RwWQAUZg_E5IN-nDZ");
+      db.from("messages").insert({ name: n, email: m, message: t }).then((res) => {
+        if (res.error) { mailtoFallback(); }
+        else { okNote("Message sent! I'll get back to you within a day."); }
+        done();
+      }).catch(() => { mailtoFallback(); done(); });
+    } catch (_) { mailtoFallback(); done(); }
   });
   const copyBtn = $("#copyEmail");
   if (copyBtn) copyBtn.addEventListener("click", async () => {
