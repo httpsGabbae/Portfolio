@@ -14,9 +14,9 @@
 <body>
 <main class="wrap admin">
   <p class="kicker"><b>···</b> — Private inbox</p>
-  <h1 class="admin-title">Messages</h1>
 
   <form class="contact-form admin-login" id="loginForm">
+    <h1 class="admin-title">Welcome back.</h1>
     <div><label class="mono" for="adminEmail">Admin email</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="you@mail.com" /></div>
     <div><label class="mono" for="adminPass">Password</label><input id="adminPass" type="password" required autocomplete="current-password" placeholder="••••••••" /></div>
     <div class="hero-row"><button class="btn btn-solid" type="submit" id="loginBtn">Log in</button></div>
@@ -24,11 +24,26 @@
   </form>
 
   <div id="inbox" hidden>
-    <div class="inbox-bar">
-      <span class="mono" id="inboxCount"></span>
+    <div class="inbox-head">
+      <div>
+        <h1 class="admin-title">Inbox</h1>
+        <div class="stat-chips">
+          <span class="chip" id="statTotal">0 total</span>
+          <span class="chip hot" id="statUnread">0 unread</span>
+          <span class="chip" id="statWeek">0 this week</span>
+        </div>
+      </div>
       <span class="hero-row" style="gap:10px">
+        <button class="btn btn-sm" id="readAllBtn" type="button">Mark all read</button>
         <button class="btn btn-sm" id="refreshBtn" type="button">Refresh</button>
         <button class="btn btn-sm" id="logoutBtn" type="button">Log out</button>
+      </span>
+    </div>
+    <div class="inbox-tools">
+      <input id="searchInput" type="search" placeholder="Search name, email, or message…" aria-label="Search messages" />
+      <span class="seg" role="group" aria-label="Filter">
+        <button type="button" id="filterAll" class="on">All</button>
+        <button type="button" id="filterUnread">Unread</button>
       </span>
     </div>
     <div id="msgList" class="msg-list"></div>
@@ -44,6 +59,7 @@
   var $ = function (s) { return document.querySelector(s); };
   var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   var loginForm = $("#loginForm"), inbox = $("#inbox"), list = $("#msgList");
+  var allRows = [], showUnreadOnly = false;
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -51,15 +67,35 @@
     });
   }
   function showErr(t) { var e = $("#loginErr"); e.textContent = t; e.hidden = false; }
+  function ago(iso) {
+    if (!iso) return "";
+    var mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+    if (mins < 1) return "just now";
+    if (mins < 60) return mins + "m ago";
+    var hrs = Math.round(mins / 60);
+    if (hrs < 24) return hrs + "h ago";
+    var days = Math.round(hrs / 24);
+    if (days < 7) return days + "d ago";
+    return new Date(iso).toLocaleDateString("en-PH", { timeZone: "Asia/Manila" });
+  }
 
-  function render(rows) {
-    $("#inboxCount").textContent = rows.length + (rows.length === 1 ? " message" : " messages") +
-      (rows.length ? " · " + rows.filter(function (m) { return !m.is_read; }).length + " unread" : "");
+  function render() {
+    var q = ($("#searchInput").value || "").toLowerCase();
+    var rows = allRows.filter(function (m) {
+      if (showUnreadOnly && m.is_read) return false;
+      if (!q) return true;
+      return (m.name + " " + m.email + " " + m.message).toLowerCase().indexOf(q) !== -1;
+    });
+    var unread = allRows.filter(function (m) { return !m.is_read; }).length;
+    var week = allRows.filter(function (m) { return Date.now() - new Date(m.created_at).getTime() < 7 * 864e5; }).length;
+    $("#statTotal").textContent = allRows.length + (allRows.length === 1 ? " total" : " total");
+    $("#statUnread").textContent = unread + " unread";
+    $("#statWeek").textContent = week + " this week";
     list.innerHTML = rows.length ? rows.map(function (m) {
       var when = m.created_at ? new Date(m.created_at).toLocaleString("en-PH", { timeZone: "Asia/Manila" }) : "";
       return '<article class="msg-card' + (m.is_read ? "" : " unread") + '" data-id="' + m.id + '">' +
         '<div class="msg-top"><strong>' + esc(m.name) + '</strong>' +
-        '<span class="mono">' + esc(when) + '</span></div>' +
+        '<span class="mono">' + esc(ago(m.created_at)) + ' · ' + esc(when) + '</span></div>' +
         '<div class="mono msg-mail">' + esc(m.email) + '</div>' +
         '<p>' + esc(m.message) + '</p>' +
         '<div class="msg-actions">' +
@@ -67,14 +103,15 @@
         '<button type="button" data-act="reply">Reply</button>' +
         '<button type="button" data-act="del" class="danger">Delete</button>' +
         '</div></article>';
-    }).join("") : '<p class="mono">No messages yet.</p>';
+    }).join("") : '<p class="mono">Nothing here. Try a different search.</p>';
   }
 
   function load() {
     list.innerHTML = '<p class="mono">Loading…</p>';
     db.from("messages").select("*").order("created_at", { ascending: false }).then(function (res) {
       if (res.error) { list.innerHTML = '<p class="mono">Error: ' + esc(res.error.message) + '</p>'; return; }
-      render(res.data || []);
+      allRows = res.data || [];
+      render();
     });
   }
 
@@ -102,6 +139,25 @@
     }).catch(function (err) { alert(err.message); });
   });
 
+  $("#searchInput").addEventListener("input", render);
+  $("#filterAll").addEventListener("click", function () {
+    showUnreadOnly = false;
+    $("#filterAll").classList.add("on"); $("#filterUnread").classList.remove("on");
+    render();
+  });
+  $("#filterUnread").addEventListener("click", function () {
+    showUnreadOnly = true;
+    $("#filterUnread").classList.add("on"); $("#filterAll").classList.remove("on");
+    render();
+  });
+  $("#readAllBtn").addEventListener("click", function () {
+    var ids = allRows.filter(function (m) { return !m.is_read; }).map(function (m) { return m.id; });
+    if (!ids.length) return;
+    db.from("messages").update({ is_read: true }).in("id", ids).then(function (res) {
+      if (res.error) { alert(res.error.message); return; }
+      load();
+    });
+  });
   $("#refreshBtn").addEventListener("click", load);
   $("#logoutBtn").addEventListener("click", function () {
     db.auth.signOut().then(function () {

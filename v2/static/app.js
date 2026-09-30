@@ -419,12 +419,21 @@
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending…";
     const done = () => { cf.reset(); sendBtn.disabled = false; sendBtn.textContent = "Send message"; };
+    const notifyOwner = () => {
+      try {
+        fetch("https://formsubmit.co/ajax/gabbae.dev@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ name: n, email: m, message: t, _subject: "New portfolio message from " + n })
+        }).catch(() => {});
+      } catch (_) {}
+    };
     if (!window.supabase) { mailtoFallback(); done(); return; }
     try {
       const db = supabase.createClient("https://sbqxizjtgdfixvnwtbry.supabase.co", "sb_publishable_jky21GxgSF35_XYQWRnnbw_na-NBhOW");
       db.from("messages").insert({ name: n, email: m, message: t }).then((res) => {
         if (res.error) { mailtoFallback(); }
-        else { okNote("Message sent! I'll get back to you within a day."); }
+        else { notifyOwner(); okNote("Message sent! I'll get back to you within a day."); }
         done();
       }).catch(() => { mailtoFallback(); done(); });
     } catch (_) { mailtoFallback(); done(); }
