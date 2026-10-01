@@ -17,13 +17,7 @@
 <main class="wrap admin">
   <p class="kicker"><b>···</b> — Private inbox</p>
 
-  <form class="contact-form admin-login" id="loginForm">
-    <h1 class="admin-title">Welcome back.</h1>
-    <div><label class="mono" for="adminEmail">Admin email</label><input id="adminEmail" type="email" required autocomplete="username" placeholder="you@mail.com" /></div>
-    <div><label class="mono" for="adminPass">Password</label><input id="adminPass" type="password" required autocomplete="current-password" placeholder="••••••••" /></div>
-    <div class="hero-row"><button class="btn btn-solid" type="submit" id="loginBtn">Log in</button></div>
-    <p class="form-ok" id="loginErr" hidden></p>
-  </form>
+  <p class="mono" id="authNote">Checking session…</p>
 
   <div id="inbox" hidden>
     <div class="dash">
@@ -82,7 +76,7 @@
   var ADMIN_EMAIL = "gabbae.dev@gmail.com";
   var $ = function (s) { return document.querySelector(s); };
   var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
-  var loginForm = $("#loginForm"), inbox = $("#inbox"), list = $("#msgList");
+  var inbox = $("#inbox"), list = $("#msgList");
   var allRows = [], view = "all";
 
   /* Cursor dot (same as main site; hidden on touch by CSS) */
@@ -106,7 +100,6 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  function showErr(t) { var e = $("#loginErr"); e.textContent = t; e.hidden = false; }
   function ago(iso) {
     if (!iso) return "";
     var mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
@@ -241,40 +234,25 @@
   $("#refreshBtn").addEventListener("click", load);
   $("#logoutBtn").addEventListener("click", function () {
     db.auth.signOut().then(function () {
-      inbox.hidden = true; loginForm.hidden = false;
+      window.location.replace("./login.html");
     });
   });
 
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var btn = $("#loginBtn");
-    btn.disabled = true; btn.textContent = "Logging in…";
-    db.auth.signInWithPassword({ email: $("#adminEmail").value.trim(), password: $("#adminPass").value })
-      .then(function (res) {
-        if (res.error) { showErr(friendlyError(res.error.message)); return; }
-        if ((res.data.user && res.data.user.email || "").toLowerCase() !== ADMIN_EMAIL) {
-          db.auth.signOut();
-          showErr("This account is not the inbox owner. Log in as gabbae.dev@gmail.com.");
-          return;
-        }
-        $("#sideUser").textContent = ADMIN_EMAIL;
-        try {
-          $("#dashDate").textContent = "Welcome back! " + new Date().toLocaleDateString("en-PH", { weekday: "long", month: "long", day: "numeric", timeZone: "Asia/Manila" }) + ".";
-        } catch (_) {}
-        loginForm.hidden = true; inbox.hidden = false;
-        load();
-      })
-      .catch(function (err) { showErr(friendlyError(err.message)); })
-      .then(function () { btn.disabled = false; btn.textContent = "Log in"; });
-  });
+  function enter() {
+    var note = $("#authNote");
+    if (note) note.hidden = true;
+    $("#sideUser").textContent = ADMIN_EMAIL;
+    try {
+      $("#dashDate").textContent = "Welcome back! " + new Date().toLocaleDateString("en-PH", { weekday: "long", month: "long", day: "numeric", timeZone: "Asia/Manila" }) + ".";
+    } catch (_) {}
+    inbox.hidden = false;
+    load();
+  }
 
   db.auth.getSession().then(function (res) {
     var email = res.data.session && res.data.session.user && res.data.session.user.email;
-    if (email && email.toLowerCase() === ADMIN_EMAIL) {
-      $("#sideUser").textContent = ADMIN_EMAIL;
-      loginForm.hidden = true; inbox.hidden = false;
-      load();
-    }
+    if (email && email.toLowerCase() === ADMIN_EMAIL) enter();
+    else window.location.replace("./login.html");
   });
 })();
 </script>
