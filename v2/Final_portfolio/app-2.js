@@ -288,6 +288,7 @@
       scrollTrigger: { trigger: card, start: "top 88%" },
     });
     const bar = $(".meter i", card);
+    if (!bar) return;
     gsap.fromTo(bar, { width: "0%" }, {
       width: bar.dataset.w + "%", duration: 1, ease: "power3.out",
       scrollTrigger: { trigger: card, start: "top 85%" },
