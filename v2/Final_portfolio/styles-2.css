@@ -1145,12 +1145,32 @@ footer {
 @media (max-width: 900px) {
   .about-top {
     grid-template-columns: 1fr;
-    justify-items: center;
+    gap: 0;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .about-top .about-big {
+    padding: 26px 22px 0;
+    font-size: 1.25rem;
   }
   .about-photo {
-    justify-self: center;
-    max-width: min(280px, 100%);
-    text-align: center;
+    justify-self: stretch;
+    max-width: none;
+    text-align: left;
+    order: -1;
+  }
+  .about-photo img {
+    width: auto;
+    max-width: 100%;
+    margin: 22px auto 0;
+    max-height: 44svh;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .about-photo figcaption {
+    padding: 0 22px 22px;
   }
 }
 
